@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
-    <input type="text" @focus="visible = true"  />
-    <input type="text" @focus="visible = true"  />
-    <Key-Board v-model="visible" showHandleBar/>
+    <input type="text" @focus="visible = true" />
+    <input type="text" @focus="visible = true" />
+    <Key-Board v-model="value" :visible="visible" showHandleBar />
   </div>
 </template>
 
@@ -10,7 +10,8 @@
 export default {
   data() {
     return {
-      visible: false
+      visible: false,
+      value: ""
     };
   },
   methods: {

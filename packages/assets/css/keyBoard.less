@@ -9,6 +9,7 @@
   height: 680px;
   border-radius: 45px;
   user-select: none;
+  z-index: 3000;
 
   .key-board-container {
     width: 100%;
@@ -16,9 +17,21 @@
     border-radius: 45px;
     background: #ededed;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .key-board-area {
+      margin-top: 25px;
+      width: 1422px;
+      height: 513px;
+      background: #e0e0e0;
+      border-radius: 31px;
+    }
   }
 
   .key-board-drag-handle {
+    cursor: move;
     position: absolute;
     bottom: -50px;
     right: 20px;
@@ -37,7 +50,6 @@
     font-family: Helvetica Neue;
     letter-spacing: 2px;
     text-indent: 75px;
-    cursor: move;
 
     svg {
       position: absolute;
