@@ -9,11 +9,20 @@
           <DefaultBoard
             v-if="showMode === 'default'"
             @modeChange="modeChange"
+            @change="change"
           />
           <!-- 标签 -->
-          <SymbolBoard v-if="showMode === 'symbol'" @modeChange="modeChange" />
+          <SymbolBoard
+            v-if="showMode === 'symbol'"
+            @modeChange="modeChange"
+            @change="change"
+          />
           <!-- 手写键盘 -->
-          <HandBoard v-if="showMode === 'handwrite'" @modeChange="modeChange" />
+          <HandBoard
+            v-if="showMode === 'handwrite'"
+            @modeChange="modeChange"
+            @change="change"
+          />
         </div>
       </div>
       <div v-if="showHandleBar" class="key-board-drag-handle" v-handleDrag>
@@ -58,6 +67,9 @@ export default {
   provide() {
     return {
       modeList: this.modeList,
+      closeKeyBoard: function () {
+        this.$parent.$emit("close")
+      }
     }
   },
   directives: { handleDrag },
@@ -86,8 +98,16 @@ export default {
       }
     },
     // 模式切换
-    modeChange(mode) {
-      console.log('mode', mode)
+    modeChange({ type }) {
+      if (type === "#+=") {
+        this.showMode = "symbol";
+      } else {
+        this.showMode = "handwrite";
+      }
+    },
+    // 文字改变
+    change(value) {
+      this.$emit("input", this.value + value)
     }
   },
   components: {

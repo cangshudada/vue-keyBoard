@@ -10,7 +10,7 @@
     ]"
     @click="
       $emit('click', {
-        data,
+        data: isUpper ? data.toUpperCase() : data,
         type,
       })
     "
@@ -107,6 +107,12 @@ export default {
     flex: 1;
     height: 90px;
     border-radius: 45px;
+  }
+
+  &.key-board-button-change2num,
+  &.key-board-button-change2lang,
+  &.key-board-button-close {
+    font-size: 30px;
   }
 }
 </style>

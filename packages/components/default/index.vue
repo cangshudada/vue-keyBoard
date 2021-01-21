@@ -43,10 +43,11 @@ const defaultLineList = [{
   data: "关闭",
   type: "close"
 }];
-import { DEFAULT_CODE } from "@/constants/key_code";
+import { useDeepCopy } from '@/utils';
 import KeyCodeButton from "@/components/keyCodeButtton/index";
+import { DEFAULT_CODE, NUMBER_CODE } from "@/constants/key_code";
 export default {
-  inject: ["modeList"],
+  inject: ["modeList", "closeKeyBoard"],
   data() {
     return {
       lineList: [
@@ -83,6 +84,11 @@ export default {
       type,
     }) {
       switch (type) {
+        //  关闭
+        case "close": {
+          this.closeKeyBoard();
+        }
+          break;
         //  大小写
         case "upper": {
           this.isUpper = !this.isUpper;
@@ -96,11 +102,40 @@ export default {
         //  数字键盘
         case "change2num": {
           this.isNum = !this.isNum;
+
+          if (this.isNum) {
+            const numberCodeLine3List = useDeepCopy(NUMBER_CODE.line3);
+            if (!this.modeList.find(mode => mode === "symbol")) {
+              numberCodeLine3List.shift();
+              numberCodeLine3List.unshift("+");
+            }
+            this.lineList = [
+              NUMBER_CODE.line1,
+              NUMBER_CODE.line2,
+              numberCodeLine3List
+            ]
+          } else {
+            this.lineList = [
+              DEFAULT_CODE.line1,
+              DEFAULT_CODE.line2,
+              DEFAULT_CODE.line3
+            ];
+          }
+        }
+          break;
+        case "handwrite":
+        case "#+=": {
+          this.$emit("modeChange", {
+            data,
+            type,
+          })
+        }
+          break;
+        default: {
+          this.$emit("change", data)
         }
           break;
       }
-      console.log('data', data);
-      console.log('type', type);
     }
   },
   components: {

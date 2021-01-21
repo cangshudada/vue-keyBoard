@@ -1,8 +1,13 @@
 <template>
   <div class="demo">
-    <input type="text" @focus="visible = true" />
-    <input type="text" @focus="visible = true" />
-    <Key-Board v-model="value" :visible="visible" showHandleBar />
+    <input type="text" v-model="value" @focus="visible = true" />
+    <input type="text" v-model="value" @focus="visible = true" />
+    <Key-Board
+      v-model="value"
+      :visible="visible"
+      showHandleBar
+      @close="close"
+    />
   </div>
 </template>
 
@@ -15,7 +20,9 @@ export default {
     };
   },
   methods: {
-
+    close() {
+      this.visible = false;
+    }
   },
   components: {},
 };
