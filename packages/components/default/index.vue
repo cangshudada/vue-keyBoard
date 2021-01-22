@@ -12,6 +12,7 @@
         :key="key"
         :type="key"
         :data="key"
+        :isSymbol="isSymbol"
         @click="click"
       />
     </div>
@@ -37,15 +38,15 @@ const defaultLineList = [{
   data: "",
   type: "change2lang"
 }, {
-  data: "",
+  data: " ",
   type: "space"
 }, {
-  data: "关闭",
+  data: "",
   type: "close"
 }];
 import { useDeepCopy } from '@/utils';
 import KeyCodeButton from "@/components/keyCodeButtton/index";
-import { DEFAULT_CODE, NUMBER_CODE } from "@/constants/key_code";
+import { DEFAULT_CODE, NUMBER_CODE, SYMBOL_CODE } from "@/constants/key_code";
 export default {
   inject: ["modeList", "closeKeyBoard"],
   data() {
@@ -61,7 +62,9 @@ export default {
       //  中英文模式
       isCn: true,
       // 是否显示数字键盘
-      isNum: false
+      isNum: false,
+      // 是否显示符号键盘
+      isSymbol: false
     };
   },
   created() {
@@ -70,7 +73,7 @@ export default {
   methods: {
     // 计算第四行code
     getLine4Code() {
-      this.line4 = defaultLineList;
+      this.line4 = useDeepCopy(defaultLineList);
       if (this.modeList.find(mode => mode === "handwrite")) {
         this.line4.splice(2, 0, {
           data: "",
@@ -102,7 +105,7 @@ export default {
         //  数字键盘
         case "change2num": {
           this.isNum = !this.isNum;
-
+          this.isSymbol = false;
           if (this.isNum) {
             const numberCodeLine3List = useDeepCopy(NUMBER_CODE.line3);
             if (!this.modeList.find(mode => mode === "symbol")) {
@@ -123,16 +126,41 @@ export default {
           }
         }
           break;
-        case "handwrite":
+        // 切换符号显示
         case "#+=": {
-          this.$emit("modeChange", {
+          this.isSymbol = !this.isSymbol;
+          if (this.isSymbol) {
+            this.lineList = [
+              SYMBOL_CODE.line1,
+              SYMBOL_CODE.line2,
+              SYMBOL_CODE.line3
+            ]
+          } else {
+            this.lineList = [
+              NUMBER_CODE.line1,
+              NUMBER_CODE.line2,
+              NUMBER_CODE.line3
+            ]
+          }
+        }
+          break;
+        // 切换手写板以及删除
+        case "handwrite":
+        case "delete": {
+          this.$emit("trigger", {
             data,
             type,
           })
         }
           break;
         default: {
-          this.$emit("change", data)
+          // 中文需要转
+          if (this.isCn) {
+            // 
+          } else {
+            // 英文直接输出
+            this.$emit("change", data)
+          }
         }
           break;
       }

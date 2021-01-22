@@ -5,18 +5,20 @@
       `key-board-button-${type}`,
       {
         'key-board-button-active':
-          (isUpper && type === 'upper') || (isNum && type === 'change2num'),
+          (isUpper && type === 'upper') ||
+          (isNum && type === 'change2num') ||
+          (isSymbol && type === '#+='),
       },
     ]"
-    @click="
-      $emit('click', {
-        data: isUpper ? data.toUpperCase() : data,
-        type,
-      })
-    "
+    @click="click"
   >
     <svg-icon
-      v-if="type === 'upper' || type === 'delete' || type === 'handwrite'"
+      v-if="
+        type === 'upper' ||
+        type === 'delete' ||
+        type === 'handwrite' ||
+        type === 'close'
+      "
       :icon-class="type"
     />
     <span v-else>{{ getCode }}</span>
@@ -32,6 +34,7 @@ export default {
     isCn: Boolean,
     isNum: Boolean,
     isUpper: Boolean,
+    isSymbol: Boolean
   },
   computed: {
     getCode() {
@@ -39,6 +42,15 @@ export default {
         return this.isCn ? "中/EN" : "EN/中"
       }
       return this.isUpper ? this.data.toUpperCase() : this.data
+    }
+  },
+  methods: {
+    click(event) {
+      event.preventDefault();
+      this.$emit('click', {
+        data: this.isUpper ? this.data.toUpperCase() : this.data,
+        type: this.type,
+      })
     }
   },
   components: {
@@ -73,6 +85,13 @@ export default {
   svg {
     width: 30px;
     height: 30px;
+  }
+
+  &.key-board-button-close {
+    svg {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &:hover,
@@ -110,8 +129,7 @@ export default {
   }
 
   &.key-board-button-change2num,
-  &.key-board-button-change2lang,
-  &.key-board-button-close {
+  &.key-board-button-change2lang {
     font-size: 30px;
   }
 }
