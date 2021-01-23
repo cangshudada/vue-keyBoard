@@ -10,7 +10,7 @@
       @mousedown="down"
       @mousemove="move"
       @mouseup="mouseup"
-      @mouseleave="leave"
+      @mouseleave="mouseup"
     ></canvas>
   </div>
 </template>
@@ -64,14 +64,23 @@ export default {
         window.addEventListener("scroll", this.updateBound);
       });
     },
+    // 更新尺寸以及位置
+    // TODO 键盘移动需要重新更新位置
     updateBound() {
-      if (!this.canvas) return;
-      const bound = this.canvas.getBoundingClientRect();
-      this.x = bound.x;
-      this.y = bound.y;
-      this.width = parseFloat(window.getComputedStyle(document.querySelector(".paint-board")).width);
-      this.height = parseFloat(window.getComputedStyle(document.querySelector(".paint-board")).height);
+      this.$nextTick(() => {
+        if (!document.querySelector(".paint-board") || !this.canvas) return;
+        const bound = this.canvas.getBoundingClientRect();
+        this.x = bound.x;
+        this.y = bound.y;
+        this.width = parseFloat(
+          window.getComputedStyle(document.querySelector(".paint-board")).width
+        );
+        this.height = parseFloat(
+          window.getComputedStyle(document.querySelector(".paint-board")).height
+        );
+      });
     },
+    // canvas重置
     reload() {
       if (!this.canvas || !this.ctx) return;
       this.clickX = [];
@@ -79,16 +88,16 @@ export default {
       this.clickC = [];
       this.ctx.clearRect(0, 0, this.width, this.height);
     },
+    // 获取x坐标
     getCx(event) {
       return Math.floor(
-        (event.clientX ||
-          event.targetTouches[0].clientX) - this.x
+        (event.clientX || event.targetTouches[0].clientX) - this.x
       );
     },
+    // 获取y坐标
     getCy(event) {
       return Math.floor(
-        (event.clientY ||
-          event.targetTouches[0].clientY) - this.y
+        (event.clientY || event.targetTouches[0].clientY) - this.y
       );
     },
     // 按下
@@ -136,21 +145,6 @@ export default {
         this.clickC.push(1);
       }
     },
-    // 离开
-    leave() {
-      if (this.isMouseDown) {
-        this.isMouseDown = false;
-        this.timer = setTimeout(() => {
-          this.reload();
-        }, 1500);
-        //标记最后一点为终点
-        this.clickC.pop();
-        this.clickC.push(1);
-      }
-    },
-  },
-  components: {
-
   },
 };
 </script>
