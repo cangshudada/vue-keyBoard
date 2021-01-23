@@ -36,32 +36,32 @@ import Result from "@/components/result/index";
 import SvgIcon from "@/components/svgIcon/svgIcon";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
-const requireContext = require.context('./icons', false, /\.svg$/);
-const importAll = r => r.keys().map(r);
+const requireContext = require.context("./icons", false, /\.svg$/);
+const importAll = (r) => r.keys().map(r);
 importAll(requireContext);
 export default {
   name: "KeyBoard",
   props: {
     modeList: {
       type: Array,
-      default: () => ["handwrite", "symbol"]
+      default: () => ["handwrite", "symbol"],
     },
     blurHide: {
       type: Boolean,
-      default: true
+      default: true,
     },
     value: String,
     showHandleBar: Boolean,
-    animateClass: String
+    animateClass: String,
   },
   provide() {
     return {
       modeList: this.modeList,
-      closeKeyBoard: function () {
-        this.$parent.visible = false;
-        this.$parent.currentInput.blur();
-      }
-    }
+      closeKeyBoard: () => {
+        this.visible = false;
+        this.currentInput.blur();
+      },
+    };
   },
   directives: { handleDrag },
   data() {
@@ -73,8 +73,8 @@ export default {
       // 显隐
       visible: false,
       // 当前注册的input
-      currentInput: null
-    }
+      currentInput: null,
+    };
   },
   mounted() {
     // 注册键盘
@@ -83,7 +83,9 @@ export default {
   methods: {
     // 注册键盘
     signUpKeyboard() {
-      this.inputList = [...document.querySelectorAll("input")].filter(item => item.getAttribute("data-mode") !== null);
+      this.inputList = [...document.querySelectorAll("input")].filter(
+        (item) => item.getAttribute("data-mode") !== null
+      );
       this.inputList.forEach((input) => {
         input.addEventListener("focus", this.showKeyBoard);
         this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
@@ -110,13 +112,13 @@ export default {
           this.$nextTick(() => {
             this.$refs.defaultBoardRef.click({
               data: ".?123",
-              type: "change2num"
+              type: "change2num",
             });
             this.$refs.defaultBoardRef.click({
               data: "#+=",
-              type: "#+="
-            })
-          })
+              type: "#+=",
+            });
+          });
           break;
         default:
           this.showMode = "default";
@@ -126,13 +128,15 @@ export default {
     // 模式切换
     trigger({ type }) {
       switch (type) {
-        case "handwrite": {
-          this.showMode = "handwrite";
-        }
+        case "handwrite":
+          {
+            this.showMode = "handwrite";
+          }
           break;
-        case "delete": {
-          this.$emit("input", this.value.substr(0, this.value.length - 1));
-        }
+        case "delete":
+          {
+            this.$emit("input", this.value.substr(0, this.value.length - 1));
+          }
           break;
       }
     },
@@ -140,10 +144,10 @@ export default {
     change(value) {
       this.$emit("input", this.value + value);
       this.$emit("keyChange", value);
-    }
+    },
   },
   beforeDestroy() {
-    this.inputList.forEach(input => {
+    this.inputList.forEach((input) => {
       input.removeEventListener("focus", this.showKeyBoard);
       input.removeEventListener("blur", this.hideKeyBoard);
     });
@@ -152,7 +156,7 @@ export default {
     Result,
     SvgIcon,
     HandBoard,
-    DefaultBoard
+    DefaultBoard,
   },
 };
 </script>
