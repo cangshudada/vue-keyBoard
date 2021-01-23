@@ -86,7 +86,7 @@ export default {
       this.inputList = [...document.querySelectorAll("input")].filter(item => item.getAttribute("data-mode") !== null);
       this.inputList.forEach((input) => {
         input.addEventListener("focus", this.showKeyBoard);
-        // this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
+        this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
       });
     },
     // 显示键盘

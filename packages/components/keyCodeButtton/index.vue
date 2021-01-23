@@ -21,7 +21,7 @@
       "
       :icon-class="type"
     />
-    <span v-else>{{ getCode }}</span>
+    <span v-else v-html="getCode"></span>
   </button>
 </template>
 
@@ -34,32 +34,32 @@ export default {
     isCn: Boolean,
     isNum: Boolean,
     isUpper: Boolean,
-    isSymbol: Boolean
+    isSymbol: Boolean,
   },
   computed: {
     getCode() {
       if (this.type === "change2lang") {
-        return this.isCn ? "中/EN" : "EN/中"
+        return this.isCn ? "<label>中</label>/EN" : "<label>EN</label>/中";
       }
-      return this.isUpper ? this.data.toUpperCase() : this.data
-    }
+      return this.isUpper ? this.data.toUpperCase() : this.data;
+    },
   },
   methods: {
     click(event) {
       event.preventDefault();
-      this.$emit('click', {
+      this.$emit("click", {
         data: this.isUpper ? this.data.toUpperCase() : this.data,
         type: this.type,
-      })
-    }
+      });
+    },
   },
   components: {
-    SvgIcon
+    SvgIcon,
   },
 };
 </script>
 
-<style scoped lang='less'>
+<style lang='less'>
 @import url("../../assets/css/theme.less");
 
 .key-board-button {
@@ -81,6 +81,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  label {
+    cursor: pointer;
+    font-size: 35px !important;
+  }
 
   svg {
     width: 30px;

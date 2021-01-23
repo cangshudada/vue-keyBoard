@@ -25,9 +25,6 @@ export default {
       value: "你好"
     };
   },
-  methods: {
-  },
-  components: {},
 };
 </script>
 
