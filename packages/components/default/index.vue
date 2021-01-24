@@ -53,7 +53,7 @@ import { useDeepCopy } from "@/utils";
 import KeyCodeButton from "@/components/keyCodeButtton/index";
 import { DEFAULT_CODE, NUMBER_CODE, SYMBOL_CODE } from "@/constants/key_code";
 export default {
-  inject: ["modeList", "closeKeyBoard"],
+  inject: ["modeList", "handApi", "closeKeyBoard"],
   data() {
     return {
       lineList: [DEFAULT_CODE.line1, DEFAULT_CODE.line2, DEFAULT_CODE.line3],
@@ -75,7 +75,7 @@ export default {
     // 计算第四行code
     getLine4Code() {
       this.line4 = useDeepCopy(defaultLineList);
-      if (this.modeList.find((mode) => mode === "handwrite")) {
+      if (this.modeList.find((mode) => mode === "handwrite") && this.handApi) {
         this.line4.splice(2, 0, {
           data: "",
           type: "handwrite",

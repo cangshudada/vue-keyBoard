@@ -14,7 +14,11 @@
         <input data-mode="handwrite" class="form-control" v-model="value" />
       </div>
     </form>
-    <Key-Board v-model="value" showHandleBar />
+    <Key-Board
+      v-model="value"
+      showHandleBar
+      handApi="https://www.cmappax.com"
+    />
   </div>
 </template>
 
@@ -22,7 +26,7 @@
 export default {
   data() {
     return {
-      value: "你好"
+      value: "你好",
     };
   },
 };

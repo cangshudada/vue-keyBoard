@@ -42,21 +42,29 @@ importAll(requireContext);
 export default {
   name: "KeyBoard",
   props: {
+    // 显示的模式列表
     modeList: {
       type: Array,
       default: () => ["handwrite", "symbol"],
     },
+    // 是否blur状态下自动隐藏
     blurHide: {
       type: Boolean,
       default: true,
     },
+    // v-modl
     value: String,
+    // 手写识别接口  如果不存在则不会显示手写面板
+    handApi: String,
+    // 是否显示拖拽句柄
     showHandleBar: Boolean,
+    // 动画的className
     animateClass: String,
   },
   provide() {
     return {
       modeList: this.modeList,
+      handApi: this.handApi,
       closeKeyBoard: () => {
         this.visible = false;
         this.currentInput.blur();
@@ -104,21 +112,33 @@ export default {
     // 设置默认键盘显示模式
     setDefaultKeyBoardMode(mode) {
       switch (mode) {
+        // 手写键盘
         case "handwrite":
-          this.showMode = "handwrite";
+          if (
+            this.modeList.find((mode) => mode === "handwrite") &&
+            this.handApi
+          ) {
+            this.showMode = "handwrite";
+          } else {
+            this.showMode = "default";
+          }
           break;
+        // 标点键盘
         case "symbol":
           this.showMode = "default";
-          this.$nextTick(() => {
-            this.$refs.defaultBoardRef.click({
-              data: ".?123",
-              type: "change2num",
+          // 如果存在标点键盘才允许切换
+          if (this.modeList.find((mode) => mode === "symbol")) {
+            this.$nextTick(() => {
+              this.$refs.defaultBoardRef.click({
+                data: ".?123",
+                type: "change2num",
+              });
+              this.$refs.defaultBoardRef.click({
+                data: "#+=",
+                type: "#+=",
+              });
             });
-            this.$refs.defaultBoardRef.click({
-              data: "#+=",
-              type: "#+=",
-            });
-          });
+          }
           break;
         default:
           this.showMode = "default";
