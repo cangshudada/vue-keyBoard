@@ -66,6 +66,8 @@ export default {
       isNum: false,
       // 是否显示符号键盘
       isSymbol: false,
+      // 上一次存的val值
+      oldVal: "",
     };
   },
   created() {
@@ -151,17 +153,24 @@ export default {
         case "handwrite":
         case "delete":
           {
-            this.$emit("trigger", {
-              data,
-              type,
-            });
+            // 如果是中文模式只删存好的字段
+            if (this.isCn && type === "delete") {
+              this.oldVal = this.oldVal.substr(0, this.oldVal.length - 1);
+              this.$emit("translate", this.oldVal);
+            } else {
+              this.$emit("trigger", {
+                data,
+                type,
+              });
+            }
           }
           break;
         default:
           {
             // 中文需要转
             if (this.isCn && !this.isNum && !this.isSymbol) {
-              // TODO
+              this.$emit("translate", this.oldVal + data);
+              this.oldVal = this.oldVal + data;
             } else {
               // 英文直接输出
               this.$emit("change", data);

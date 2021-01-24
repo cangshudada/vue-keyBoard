@@ -11,6 +11,7 @@
             v-if="showMode === 'default'"
             @trigger="trigger"
             @change="change"
+            @translate="translate"
           />
           <!-- 手写键盘 -->
           <HandBoard
@@ -36,6 +37,7 @@ import Result from "@/components/result/index";
 import SvgIcon from "@/components/svgIcon/svgIcon";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
+import pinYinNote from "@/constants/pinyin_dict_note";
 const requireContext = require.context("./icons", false, /\.svg$/);
 const importAll = (r) => r.keys().map(r);
 importAll(requireContext);
@@ -96,7 +98,7 @@ export default {
       );
       this.inputList.forEach((input) => {
         input.addEventListener("focus", this.showKeyBoard);
-        this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
+        // this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
       });
     },
     // 显示键盘
@@ -163,6 +165,11 @@ export default {
     // 文字改变
     change(value) {
       this.$emit("input", this.value + value);
+      this.$emit("keyChange", value);
+    },
+    // 拼音转中文
+    translate(value) {
+      console.log('pinYinNote', pinYinNote[value])
       this.$emit("keyChange", value);
     },
   },
