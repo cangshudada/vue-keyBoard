@@ -41,7 +41,7 @@ import "@/assets/css/keyBoard.less";
 import handleDrag from "@/directive/drag";
 import Result from "@/components/result/index";
 import SvgIcon from "@/components/svgIcon/svgIcon";
-import { axiosConfig } from './helper/axiosConfig';
+import { axiosConfig } from "./helper/axiosConfig";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
@@ -53,6 +53,7 @@ if (require.context) {
 Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",
+  inheritAttrs: false,
   props: {
     color: {
       type: String,
@@ -91,7 +92,7 @@ export default {
       },
       changeDefaultBoard: () => {
         this.showMode = "default";
-      }
+      },
     };
   },
   directives: { handleDrag },
@@ -106,7 +107,7 @@ export default {
       // 当前注册的input
       currentInput: null,
       // 显示字符
-      resultVal: {}
+      resultVal: {},
     };
   },
   mounted() {
@@ -141,14 +142,14 @@ export default {
     hideKeyBoard() {
       this.visible = false;
       this.showMode = "default";
-      this.resultVal = {}
+      this.resultVal = {};
     },
     // 设置默认键盘显示模式
     setDefaultKeyBoardMode(mode) {
       // 默认初始化都是中文键盘
       this.$nextTick(() => {
         this.$EventBus.$emit("keyBoardChange", "CN");
-      })
+      });
       switch (mode) {
         // 手写键盘
         case "handwrite":
@@ -159,7 +160,7 @@ export default {
             this.showMode = "handwrite";
             this.$nextTick(() => {
               this.$EventBus.$emit("keyBoardChange", "handwrite");
-            })
+            });
           } else {
             this.showMode = "default";
           }
@@ -211,8 +212,8 @@ export default {
     translate(value) {
       this.resultVal = {
         code: value,
-        value: pinYinNote[value]
-      }
+        value: pinYinNote[value],
+      };
       this.$emit("keyChange", value);
     },
   },
