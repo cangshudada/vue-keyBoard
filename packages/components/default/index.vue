@@ -72,6 +72,9 @@ export default {
   },
   created() {
     this.getLine4Code();
+    this.$EventBus.$on("resultReset", () => {
+      this.oldVal = "";
+    });
   },
   methods: {
     // 计算第四行code
@@ -90,12 +93,14 @@ export default {
         //  关闭
         case "close":
           {
+            this.oldVal = "";
             this.closeKeyBoard();
           }
           break;
         //  大小写
         case "upper":
           {
+            this.oldVal = "";
             this.isUpper = !this.isUpper;
           }
           break;
@@ -103,6 +108,10 @@ export default {
         case "change2lang":
           {
             this.isCn = !this.isCn;
+            // 默认键盘状态下
+            if (!this.isNum && !this.isSymbol) {
+              this.$EventBus.$emit("keyBoardChange", this.isCn ? "CN" : "EN");
+            }
           }
           break;
         //  数字键盘
@@ -111,6 +120,7 @@ export default {
             this.isNum = !this.isNum;
             this.isSymbol = false;
             if (this.isNum) {
+              this.$EventBus.$emit("keyBoardChange", "number");
               const numberCodeLine3List = useDeepCopy(NUMBER_CODE.line3);
               if (!this.modeList.find((mode) => mode === "symbol")) {
                 numberCodeLine3List.shift();
@@ -122,6 +132,7 @@ export default {
                 numberCodeLine3List,
               ];
             } else {
+              this.$EventBus.$emit("keyBoardChange", this.isCn ? "CN" : "EN");
               this.lineList = [
                 DEFAULT_CODE.line1,
                 DEFAULT_CODE.line2,
@@ -135,12 +146,14 @@ export default {
           {
             this.isSymbol = !this.isSymbol;
             if (this.isSymbol) {
+              this.$EventBus.$emit("keyBoardChange", "symbol");
               this.lineList = [
                 SYMBOL_CODE.line1,
                 SYMBOL_CODE.line2,
                 SYMBOL_CODE.line3,
               ];
             } else {
+              this.$EventBus.$emit("keyBoardChange", "number");
               this.lineList = [
                 NUMBER_CODE.line1,
                 NUMBER_CODE.line2,
@@ -154,10 +167,13 @@ export default {
         case "delete":
           {
             // 如果是中文模式只删存好的字段
-            if (this.isCn && type === "delete") {
+            if (this.isCn && type === "delete" && this.oldVal) {
               this.oldVal = this.oldVal.substr(0, this.oldVal.length - 1);
               this.$emit("translate", this.oldVal);
             } else {
+              if (type === "handwrite") {
+                this.$EventBus.$emit("keyBoardChange", "handwrite");
+              }
               this.$emit("trigger", {
                 data,
                 type,

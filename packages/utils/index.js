@@ -29,3 +29,18 @@ export const useDeepCopy = (target) => {
     }
     return _deepCopy(target);
 }
+
+/**
+ * @description 按特定长度切割数组
+ * @param {Array} array 需要分组的数组
+ * @param {number} subGroupLength 切割长度
+ * @returns {Array} 切割后的数组
+ */
+export const groupSplitArray = (array, subGroupLength) => {
+    let index = 0;
+    const newArray = [];
+    while (index < array.length) {
+        newArray.push(array.slice(index, (index += subGroupLength)));
+    }
+    return newArray;
+}

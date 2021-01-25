@@ -16,8 +16,12 @@
 </template>
 
 <script>
-import variables from "@/assets/css/theme.less";
+import { getWordFromHandWrite } from '@/server';
 export default {
+  props: {
+    lib: String
+  },
+  inject: ["color"],
   data() {
     return {
       // 宽
@@ -51,6 +55,10 @@ export default {
   mounted() {
     // 面板初始化
     this.paintBoardInit();
+    // 拖动键盘需要
+    this.$EventBus.$on("updateBound", () => {
+      this.updateBound();
+    })
   },
   methods: {
     paintBoardInit() {
@@ -65,11 +73,10 @@ export default {
       });
     },
     // 更新尺寸以及位置
-    // TODO 键盘移动需要重新更新位置
     updateBound() {
       this.$nextTick(() => {
-        if (!document.querySelector(".paint-board") || !this.canvas) return;
-        const bound = this.canvas.getBoundingClientRect();
+        if (!document.querySelector(".paint-board")) return;
+        const bound = document.querySelector(".paint-board").getBoundingClientRect();
         this.x = bound.x;
         this.y = bound.y;
         this.width = parseFloat(
@@ -122,8 +129,8 @@ export default {
         this.clickY.push(cy);
         this.clickC.push(0);
         //画图
-        this.ctx.strokeStyle = variables.primaryColor;
-        this.ctx.fillStyle = variables.primaryColor;
+        this.ctx.strokeStyle = this.color;
+        this.ctx.fillStyle = this.color;
         this.ctx.lineWidth = 4;
         this.ctx.lineCap = "round";
         this.ctx.moveTo(this.oldX, this.oldY);
@@ -143,8 +150,14 @@ export default {
         //标记最后一点为终点
         this.clickC.pop();
         this.clickC.push(1);
+        this.getWords();
       }
     },
+    // 获取文字
+    async getWords() {
+      const { data } = await getWordFromHandWrite(this.clickX, this.clickY, this.clickC, this.lib);
+      this.$EventBus.$emit("getWordsFromServer", data?.v || "");
+    }
   },
 };
 </script>

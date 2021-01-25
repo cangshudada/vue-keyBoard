@@ -3,7 +3,7 @@
     <div id="key-board" v-if="visible" @mousedown.prevent>
       <div class="key-board-container">
         <!-- 结果展示 -->
-        <Result />
+        <Result :data="resultVal" @change="change" />
         <div class="key-board-area">
           <!-- 默认键盘 -->
           <DefaultBoard
@@ -21,7 +21,12 @@
           />
         </div>
       </div>
-      <div v-if="showHandleBar" class="key-board-drag-handle" v-handleDrag>
+      <div
+        v-if="showHandleBar"
+        class="key-board-drag-handle"
+        :style="{ color }"
+        v-handleDrag
+      >
         将键盘拖到您喜欢的位置
         <svg-icon icon-class="drag" />
       </div>
@@ -30,20 +35,27 @@
 </template>
 
 <script>
+import Vue from "vue";
 import "@/libs/flexible";
 import "@/assets/css/keyBoard.less";
 import handleDrag from "@/directive/drag";
 import Result from "@/components/result/index";
 import SvgIcon from "@/components/svgIcon/svgIcon";
+import { axiosConfig } from './helper/axiosConfig';
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
 const requireContext = require.context("./icons", false, /\.svg$/);
 const importAll = (r) => r.keys().map(r);
 importAll(requireContext);
+Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",
   props: {
+    color: {
+      type: String,
+      default: "#eaa050",
+    },
     // 显示的模式列表
     modeList: {
       type: Array,
@@ -54,23 +66,30 @@ export default {
       type: Boolean,
       default: true,
     },
+    // 是否显示拖拽句柄
+    showHandleBar: {
+      type: Boolean,
+      default: true,
+    },
     // v-modl
     value: String,
     // 手写识别接口  如果不存在则不会显示手写面板
     handApi: String,
-    // 是否显示拖拽句柄
-    showHandleBar: Boolean,
     // 动画的className
     animateClass: String,
   },
   provide() {
     return {
+      color: this.color,
       modeList: this.modeList,
       handApi: this.handApi,
       closeKeyBoard: () => {
         this.visible = false;
         this.currentInput.blur();
       },
+      changeDefaultBoard: () => {
+        this.showMode = "default";
+      }
     };
   },
   directives: { handleDrag },
@@ -84,21 +103,30 @@ export default {
       visible: false,
       // 当前注册的input
       currentInput: null,
+      // 显示字符
+      resultVal: {}
     };
   },
   mounted() {
     // 注册键盘
     this.signUpKeyboard();
+
+    this.$EventBus.$on("resultReset", () => {
+      this.resultVal = {};
+    });
   },
   methods: {
     // 注册键盘
     signUpKeyboard() {
+      // 设置baseUrl
+      axiosConfig(this.handApi);
+
       this.inputList = [...document.querySelectorAll("input")].filter(
         (item) => item.getAttribute("data-mode") !== null
       );
       this.inputList.forEach((input) => {
         input.addEventListener("focus", this.showKeyBoard);
-        // this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
+        this.blurHide && input.addEventListener("blur", this.hideKeyBoard);
       });
     },
     // 显示键盘
@@ -110,9 +138,15 @@ export default {
     // 关闭键盘
     hideKeyBoard() {
       this.visible = false;
+      this.showMode = "default";
+      this.resultVal = {}
     },
     // 设置默认键盘显示模式
     setDefaultKeyBoardMode(mode) {
+      // 默认初始化都是中文键盘
+      this.$nextTick(() => {
+        this.$EventBus.$emit("keyBoardChange", "CN");
+      })
       switch (mode) {
         // 手写键盘
         case "handwrite":
@@ -121,6 +155,9 @@ export default {
             this.handApi
           ) {
             this.showMode = "handwrite";
+            this.$nextTick(() => {
+              this.$EventBus.$emit("keyBoardChange", "handwrite");
+            })
           } else {
             this.showMode = "default";
           }
@@ -142,6 +179,7 @@ export default {
             });
           }
           break;
+        // 默认
         default:
           this.showMode = "default";
           break;
@@ -169,7 +207,10 @@ export default {
     },
     // 拼音转中文
     translate(value) {
-      console.log('pinYinNote', pinYinNote[value])
+      this.resultVal = {
+        code: value,
+        value: pinYinNote[value]
+      }
       this.$emit("keyChange", value);
     },
   },

@@ -1,5 +1,5 @@
 const handleDrag = {
-    bind(el) {
+    bind(el, binding, vnode) {
         // PC端
         el.onmousedown = e => {
             //算出鼠标相对元素的位置
@@ -15,7 +15,8 @@ const handleDrag = {
                 el.parentNode.style.left = left + 'px';
                 el.parentNode.style.top = top + 'px';
             };
-            document.onmouseup = e => {
+            document.onmouseup = () => {
+                vnode.context.$EventBus.$emit("updateBound");
                 document.onmousemove = null;
                 document.onmouseup = null;
             };
@@ -39,7 +40,8 @@ const handleDrag = {
                 el.parentNode.style.left = left + 'px';
                 el.parentNode.style.top = top + 'px';
             };
-            document.ontouchend = e => {
+            document.ontouchend = () => {
+                vnode.context.$EventBus.$emit("updateBound");
                 document.ontouchmove = null;
                 document.ontouchend = null;
             };

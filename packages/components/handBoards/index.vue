@@ -2,7 +2,7 @@
   <!-- 手写 -->
   <div class="hand-write-board">
     <!-- 手写板 -->
-    <PaintBoard />
+    <PaintBoard :lib="isCn ? 'CN' : 'EN'" />
     <!-- 操作按钮栏 -->
     <div class="hand-write-board-opers">
       <KeyCodeButton
@@ -21,7 +21,7 @@
 import PaintBoard from "./paintBoard";
 import KeyCodeButton from "@/components/keyCodeButtton/index";
 export default {
-  inject: ["closeKeyBoard"],
+  inject: ["closeKeyBoard", "changeDefaultBoard"],
   data() {
     return {
       // 手写板部分按钮列表
@@ -32,7 +32,7 @@ export default {
         },
         {
           data: "",
-          type: "update",
+          type: "back",
         },
         {
           data: "",
@@ -54,6 +54,12 @@ export default {
         case "close":
           {
             this.closeKeyBoard();
+          }
+          break;
+        //  关闭
+        case "back":
+          {
+            this.changeDefaultBoard();
           }
           break;
         //   语言

@@ -1,11 +1,18 @@
 <template>
-  <svg class="svg-icon" v-on="$listeners">
+  <svg
+    class="svg-icon"
+    :style="{
+      stroke: this.color,
+    }"
+    v-on="$listeners"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>
 <script>
 export default {
   name: "SvgIcon",
+  inject: ["color"],
   props: {
     iconClass: {
       type: String,
@@ -24,9 +31,7 @@ export default {
 };
 </script>
 <style lang='less'>
-@import url("../../assets/css/theme.less");
 .svg-icon {
   fill: none !important;
-  stroke: @primaryColor!important;
 }
 </style>

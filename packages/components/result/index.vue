@@ -1,24 +1,102 @@
 <template>
-  <div class="key-board-result">
-    <div class="key-board-code-show"></div>
-    <div class="key-board-result-show"></div>
+  <div
+    class="key-board-result"
+    v-if="status === 'CN' || status === 'handwrite'"
+  >
+    <div class="key-board-code-show" v-if="status === 'CN'">
+      {{ data.code }}
+    </div>
+    <div class="key-board-result-show">
+      <div class="key-board-result-show-container">
+        <span
+          v-for="(key, index) in showList[showIndex]"
+          :key="index"
+          @click="selectWord(key)"
+          >{{ index + 1 }}.{{ key }}</span
+        >
+      </div>
+      <div class="key-board-result-show-more" v-if="valueList.length > 11">
+        <span :style="style" @click="upper"></span>
+        <span :style="style" @click="lower"></span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { groupSplitArray } from '@/utils';
 export default {
   props: {
-    isShowCode: Boolean,
+    data: Object,
+  },
+  inject: ["color"],
+  computed: {
+    style() {
+      return {
+        borderTopColor: this.color
+      }
+    }
   },
   data() {
-    return {};
+    return {
+      status: "",
+      valueList: [],
+      showList: [],
+      showIndex: 0,
+    };
   },
-  computed: {},
-  created() {},
-  mounted() {},
-  watch: {},
-  methods: {},
-  components: {},
+  created() {
+    this.$EventBus.$on("keyBoardChange", status => {
+      // 会引起高度变化 需要重新计算画板
+      this.$EventBus.$emit("updateBound");
+      this.status = status;
+      this.reset();
+    });
+
+    this.$EventBus.$on("getWordsFromServer", data => {
+      this.showList = groupSplitArray(data.replace(/\s+/g, "").split(""), 11);
+    });
+  },
+  watch: {
+    data: {
+      handler: function (newVal) {
+        this.showIndex = 0;
+        this.valueList = newVal?.value?.split("") || [];
+        if (this.valueList.length === 0) {
+          this.showList = [];
+        }
+
+        if (this.valueList.length > 11) {
+          this.showList = groupSplitArray(this.valueList, 11);
+        }
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    // 重置
+    reset() {
+      this.showIndex = 0;
+      this.showList = [];
+      this.valueList = [];
+      this.$EventBus.$emit("resultReset");
+    },
+    // 上一页
+    upper() {
+      if (this.showIndex === 0) return;
+      this.showIndex -= 1;
+    },
+    // 下一页
+    lower() {
+      if (this.showIndex === this.showList.length - 1) return;
+      this.showIndex += 1;
+    },
+    // 选择某个词
+    selectWord(word) {
+      this.reset();
+      this.$emit("change", word);
+    }
+  }
 };
 </script>
 
@@ -42,11 +120,59 @@ export default {
     font-weight: 400;
     line-height: 40px;
     color: #eaa050;
+    text-indent: 12px;
   }
 
   .key-board-result-show {
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
     flex: 1;
+
+    .key-board-result-show-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 95%;
+      max-width: 95%;
+      overflow: hidden;
+      span {
+        white-space: nowrap;
+        font-size: 40px;
+        font-family: SimHei;
+        font-weight: 400;
+        line-height: 54px;
+        color: #eaa050;
+        cursor: pointer;
+        & + span {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    .key-board-result-show-more {
+      height: 45px;
+      flex: 1;
+      border-left: 1px solid #707070;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        width: 0px;
+        height: 0px;
+        border: 16px solid;
+        border-color: transparent;
+        cursor: pointer;
+        &:nth-child(1) {
+          transform: translateY(-11px) rotate(180deg);
+        }
+        &:nth-child(2) {
+          transform: translateY(-5px);
+        }
+      }
+    }
   }
 }
 </style>

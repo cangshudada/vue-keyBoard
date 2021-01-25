@@ -1,12 +1,10 @@
-@import url("./theme.less");
-
 #key-board {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 1535px;
-  height: 730px;
+  height: auto;
   border-radius: 45px;
   user-select: none;
   z-index: 3000;
@@ -22,7 +20,7 @@
     align-items: center;
 
     .key-board-area {
-      margin-top: 25px;
+      margin: 25px 0;
       width: 1422px;
       height: 513px;
       background: #e0e0e0;
@@ -46,7 +44,6 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 100px;
-    color: @primaryColor;
     font-family: Helvetica Neue;
     letter-spacing: 2px;
     text-indent: 75px;

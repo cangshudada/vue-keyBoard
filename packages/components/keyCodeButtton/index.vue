@@ -10,14 +10,18 @@
           (isSymbol && type === '#+='),
       },
     ]"
+    :style="style"
     @click="click"
+    @mouseenter="isHover = true"
+    @mouseleave="isHover = false"
   >
     <svg-icon
       v-if="
         type === 'upper' ||
         type === 'delete' ||
         type === 'handwrite' ||
-        type === 'close'
+        type === 'close' ||
+        type === 'back'
       "
       :icon-class="type"
     />
@@ -36,6 +40,12 @@ export default {
     isUpper: Boolean,
     isSymbol: Boolean,
   },
+  data() {
+    return {
+      isHover: false
+    }
+  },
+  inject: ["color"],
   computed: {
     getCode() {
       if (this.type === "change2lang") {
@@ -43,6 +53,24 @@ export default {
       }
       return this.isUpper ? this.data.toUpperCase() : this.data;
     },
+    style() {
+      if (
+        (this.isUpper && this.type === 'upper') ||
+        (this.isNum && this.type === 'change2num') ||
+        (this.isSymbol && this.type === '#+=') ||
+        this.isHover
+      ) {
+        return {
+          color: "#f5f5f5",
+          background: this.color
+        }
+      } else {
+        return {
+          color: this.color,
+          background: "#f5f5f5"
+        }
+      }
+    }
   },
   methods: {
     click(event) {
@@ -60,20 +88,16 @@ export default {
 </script>
 
 <style lang='less'>
-@import url("../../assets/css/theme.less");
-
 .key-board-button {
   padding: 0;
   width: 90px;
   height: 90px;
-  background: #f5f5f5;
   border-radius: 50%;
   font-size: 35px;
   text-align: center;
   font-family: Helvetica Neue;
   font-weight: 400;
   line-height: 90px;
-  color: @primaryColor;
   cursor: pointer;
   outline: none;
   border: none;
@@ -101,9 +125,6 @@ export default {
 
   &:hover,
   &.key-board-button-active {
-    background: @primaryColor;
-    color: #f5f5f5;
-
     svg {
       fill: none !important;
       stroke: #f5f5f5 !important;
@@ -117,6 +138,13 @@ export default {
     svg {
       width: 65px;
       height: 28px;
+    }
+  }
+
+  &.key-board-button-back {
+    svg {
+      width: 45px;
+      height: 45px;
     }
   }
 
