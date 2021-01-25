@@ -7,16 +7,15 @@
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">标点键盘</label>
-        <input class="form-control" v-model="value" />
+        <input data-mode="symbol" class="form-control" v-model="value" />
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">手写键盘</label>
-        <input class="form-control" v-model="value" />
+        <input data-mode="handwrite" class="form-control" v-model="value" />
       </div>
     </form>
     <Key-Board
       v-model="value"
-      showHandleBar
       handApi="https://service.chaunve.com/HandWriteRecognizerService.asmx/Command"
     />
   </div>

@@ -1,6 +1,6 @@
 <template>
   <transition :name="animateClass || 'move-bottom-to-top'">
-    <div id="key-board" v-if="visible" @mousedown.prevent>
+    <div class="key-board" v-if="visible" @mousedown.prevent>
       <div class="key-board-container">
         <!-- 结果展示 -->
         <Result :data="resultVal" @change="change" />
@@ -27,7 +27,7 @@
         :style="{ color }"
         v-handleDrag
       >
-        将键盘拖到您喜欢的位置
+        拖到您喜欢的位置
         <svg-icon icon-class="drag" />
       </div>
     </div>
@@ -45,9 +45,11 @@ import { axiosConfig } from './helper/axiosConfig';
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
-const requireContext = require.context("./icons", false, /\.svg$/);
-const importAll = (r) => r.keys().map(r);
-importAll(requireContext);
+if (require.context) {
+  const requireContext = require.context("./icons", false, /\.svg$/);
+  const importAll = (r) => r.keys().map(r);
+  importAll(requireContext);
+}
 Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",

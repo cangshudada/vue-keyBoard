@@ -53,6 +53,7 @@ import { useDeepCopy } from "@/utils";
 import KeyCodeButton from "@/components/keyCodeButtton/index";
 import { DEFAULT_CODE, NUMBER_CODE, SYMBOL_CODE } from "@/constants/key_code";
 export default {
+  name: "DefaultKeyBoard",
   inject: ["modeList", "handApi", "closeKeyBoard"],
   data() {
     return {
