@@ -21,6 +21,7 @@
 import PaintBoard from "./paintBoard";
 import KeyCodeButton from "@/components/keyCodeButtton/index";
 export default {
+  name: "PaintPart",
   inject: ["closeKeyBoard", "changeDefaultBoard"],
   data() {
     return {
@@ -56,10 +57,11 @@ export default {
             this.closeKeyBoard();
           }
           break;
-        //  关闭
+        //  回退
         case "back":
           {
             this.changeDefaultBoard();
+            this.$EventBus?.$emit("resultReset");
           }
           break;
         //   语言

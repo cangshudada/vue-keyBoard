@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1611659766432" clover="3.2.0">
+  <project timestamp="1611659766432" name="All files">
+    <metrics statements="362" coveredstatements="253" conditionals="210" coveredconditionals="130" methods="81" coveredmethods="56" elements="653" coveredelements="439" complexity="0" loc="362" ncloc="362" packages="13" files="15" classes="15"/>
+    <package name="packages">
+      <metrics statements="60" coveredstatements="39" conditionals="21" coveredconditionals="15" methods="23" coveredmethods="14"/>
+      <file name="keyBoard.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\keyBoard.vue">
+        <metrics statements="60" coveredstatements="39" conditionals="21" coveredconditionals="15" methods="23" coveredmethods="14"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="64" count="11" type="stmt"/>
+        <line num="84" count="11" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="99" count="11" type="stmt"/>
+        <line num="114" count="11" type="stmt"/>
+        <line num="116" count="11" type="cond" truecount="3" falsecount="1"/>
+        <line num="117" count="360" type="stmt"/>
+        <line num="124" count="11" type="stmt"/>
+        <line num="125" count="61" type="stmt"/>
+        <line num="128" count="11" type="stmt"/>
+        <line num="129" count="50" type="stmt"/>
+        <line num="130" count="50" type="cond" truecount="2" falsecount="0"/>
+        <line num="135" count="7" type="stmt"/>
+        <line num="136" count="7" type="stmt"/>
+        <line num="137" count="7" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+        <line num="142" count="1" type="stmt"/>
+        <line num="143" count="1" type="stmt"/>
+        <line num="148" count="7" type="stmt"/>
+        <line num="149" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="151" count="7" type="stmt"/>
+        <line num="154" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="158" count="1" type="stmt"/>
+        <line num="159" count="1" type="stmt"/>
+        <line num="160" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="163" count="1" type="stmt"/>
+        <line num="165" count="2" type="stmt"/>
+        <line num="168" count="0" type="stmt"/>
+        <line num="170" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="171" count="0" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="182" count="0" type="stmt"/>
+        <line num="185" count="5" type="stmt"/>
+        <line num="186" count="5" type="stmt"/>
+        <line num="191" count="0" type="stmt"/>
+        <line num="194" count="0" type="stmt"/>
+        <line num="196" count="0" type="stmt"/>
+        <line num="199" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="206" count="0" type="stmt"/>
+        <line num="207" count="0" type="stmt"/>
+        <line num="211" count="0" type="stmt"/>
+        <line num="215" count="0" type="stmt"/>
+        <line num="219" count="0" type="stmt"/>
+        <line num="220" count="0" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.assets.css">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="keyBoard.less" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\assets\css\keyBoard.less">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.components.default">
+      <metrics statements="53" coveredstatements="44" conditionals="50" coveredconditionals="40" methods="7" coveredmethods="7"/>
+      <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\default\index.vue">
+        <metrics statements="53" coveredstatements="44" conditionals="50" coveredconditionals="40" methods="7" coveredmethods="7"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="59" count="19" type="stmt"/>
+        <line num="77" count="19" type="stmt"/>
+        <line num="78" count="19" type="cond" truecount="4" falsecount="0"/>
+        <line num="79" count="278" type="stmt"/>
+        <line num="85" count="19" type="stmt"/>
+        <line num="86" count="19" type="cond" truecount="4" falsecount="0"/>
+        <line num="87" count="4" type="stmt"/>
+        <line num="95" count="9" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="115" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="116" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="123" count="2" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
+        <line num="125" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="126" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="127" count="2" type="stmt"/>
+        <line num="128" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="132" count="2" type="stmt"/>
+        <line num="138" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="146" count="2" type="stmt"/>
+        <line num="150" count="1" type="stmt"/>
+        <line num="151" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="152" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="153" count="1" type="stmt"/>
+        <line num="159" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="160" count="0" type="stmt"/>
+        <line num="167" count="1" type="stmt"/>
+        <line num="173" count="2" type="cond" truecount="4" falsecount="1"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="177" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="178" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="180" count="2" type="stmt"/>
+        <line num="186" count="2" type="stmt"/>
+        <line num="190" count="1" type="cond" truecount="4" falsecount="1"/>
+        <line num="191" count="1" type="stmt"/>
+        <line num="192" count="1" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="198" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.components.handBoards">
+      <metrics statements="75" coveredstatements="71" conditionals="38" coveredconditionals="26" methods="16" coveredmethods="15"/>
+      <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\handBoards\index.vue">
+        <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="53" count="4" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+      </file>
+      <file name="paintBoard.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\handBoards\paintBoard.vue">
+        <metrics statements="62" coveredstatements="58" conditionals="32" coveredconditionals="20" methods="14" coveredmethods="13"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="58" count="8" type="stmt"/>
+        <line num="60" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="61" count="38" type="stmt"/>
+        <line num="66" count="8" type="stmt"/>
+        <line num="67" count="8" type="stmt"/>
+        <line num="68" count="8" type="stmt"/>
+        <line num="69" count="8" type="stmt"/>
+        <line num="70" count="8" type="stmt"/>
+        <line num="71" count="8" type="stmt"/>
+        <line num="72" count="8" type="stmt"/>
+        <line num="76" count="46" type="stmt"/>
+        <line num="77" count="53" type="cond" truecount="2" falsecount="0"/>
+        <line num="78" count="39" type="stmt"/>
+        <line num="79" count="39" type="stmt"/>
+        <line num="80" count="39" type="stmt"/>
+        <line num="81" count="39" type="stmt"/>
+        <line num="84" count="39" type="stmt"/>
+        <line num="91" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="92" count="8" type="stmt"/>
+        <line num="93" count="8" type="stmt"/>
+        <line num="94" count="8" type="stmt"/>
+        <line num="95" count="8" type="stmt"/>
+        <line num="99" count="8" type="cond" truecount="4" falsecount="1"/>
+        <line num="100" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="106" count="8" type="cond" truecount="4" falsecount="1"/>
+        <line num="107" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="113" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="114" count="2" type="stmt"/>
+        <line num="115" count="2" type="stmt"/>
+        <line num="116" count="2" type="stmt"/>
+        <line num="117" count="2" type="stmt"/>
+        <line num="118" count="2" type="stmt"/>
+        <line num="119" count="2" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
+        <line num="124" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="125" count="2" type="stmt"/>
+        <line num="126" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="127" count="2" type="stmt"/>
+        <line num="128" count="2" type="stmt"/>
+        <line num="129" count="2" type="stmt"/>
+        <line num="130" count="2" type="stmt"/>
+        <line num="131" count="2" type="stmt"/>
+        <line num="133" count="2" type="stmt"/>
+        <line num="134" count="2" type="stmt"/>
+        <line num="135" count="2" type="stmt"/>
+        <line num="136" count="2" type="stmt"/>
+        <line num="137" count="2" type="stmt"/>
+        <line num="138" count="2" type="stmt"/>
+        <line num="139" count="2" type="stmt"/>
+        <line num="140" count="2" type="stmt"/>
+        <line num="141" count="2" type="stmt"/>
+        <line num="146" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="147" count="2" type="stmt"/>
+        <line num="148" count="2" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="152" count="2" type="stmt"/>
+        <line num="153" count="2" type="stmt"/>
+        <line num="154" count="2" type="stmt"/>
+        <line num="159" count="2" type="stmt"/>
+        <line num="160" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="packages.components.keyCodeButtton">
+      <metrics statements="10" coveredstatements="10" conditionals="17" coveredconditionals="16" methods="4" coveredmethods="4"/>
+      <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\keyCodeButtton\index.vue">
+        <metrics statements="10" coveredstatements="10" conditionals="17" coveredconditionals="16" methods="4" coveredmethods="4"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="45" count="724" type="stmt"/>
+        <line num="52" count="667" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="638" type="cond" truecount="2" falsecount="0"/>
+        <line num="58" count="763" type="cond" truecount="9" falsecount="0"/>
+        <line num="64" count="4" type="stmt"/>
+        <line num="69" count="759" type="stmt"/>
+        <line num="78" count="14" type="stmt"/>
+        <line num="79" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.components.result">
+      <metrics statements="26" coveredstatements="16" conditionals="18" coveredconditionals="11" methods="10" coveredmethods="5"/>
+      <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\result\index.vue">
+        <metrics statements="26" coveredstatements="16" conditionals="18" coveredconditionals="11" methods="10" coveredmethods="5"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
+        <line num="49" count="10" type="stmt"/>
+        <line num="51" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="44" type="stmt"/>
+        <line num="53" count="44" type="stmt"/>
+        <line num="56" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="64" count="43" type="stmt"/>
+        <line num="65" count="43" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="43" type="cond" truecount="1" falsecount="1"/>
+        <line num="67" count="43" type="stmt"/>
+        <line num="70" count="43" type="cond" truecount="1" falsecount="1"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="80" count="44" type="stmt"/>
+        <line num="81" count="44" type="stmt"/>
+        <line num="82" count="44" type="stmt"/>
+        <line num="83" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="87" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.components.svgIcon">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="svgIcon.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\svgIcon\svgIcon.vue">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="28" count="94" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.constants">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="key_code.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\constants\key_code.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="pinyin_dict_note.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\constants\pinyin_dict_note.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="packages.directive">
+      <metrics statements="29" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="1"/>
+      <file name="drag.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\directive\drag.js">
+        <metrics statements="29" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.helper">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="axiosConfig.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\helper\axiosConfig.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.libs">
+      <metrics statements="75" coveredstatements="38" conditionals="48" coveredconditionals="14" methods="7" coveredmethods="3"/>
+      <file name="flexible.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\libs\flexible.js">
+        <metrics statements="75" coveredstatements="38" conditionals="48" coveredconditionals="14" methods="7" coveredmethods="3"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="87" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="109" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.server">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\server\index.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="packages.utils">
+      <metrics statements="23" coveredstatements="21" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
+      <file name="index.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\utils\index.js">
+        <metrics statements="23" coveredstatements="21" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="23" type="stmt"/>
+        <line num="9" count="280" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="176" type="stmt"/>
+        <line num="12" count="104" type="stmt"/>
+        <line num="13" count="201" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="104" type="stmt"/>
+        <line num="18" count="104" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="22" type="stmt"/>
+        <line num="21" count="104" type="stmt"/>
+        <line num="22" count="104" type="stmt"/>
+        <line num="23" count="257" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="257" type="stmt"/>
+        <line num="28" count="104" type="stmt"/>
+        <line num="30" count="23" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

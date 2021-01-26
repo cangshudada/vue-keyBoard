@@ -48,13 +48,14 @@ export default {
   created() {
     this.$EventBus.$on("keyBoardChange", status => {
       // 会引起高度变化 需要重新计算画板
-      this.$EventBus.$emit("updateBound");
+      this.$EventBus?.$emit("updateBound");
       this.status = status;
       this.reset();
     });
 
-    this.$EventBus.$on("getWordsFromServer", data => {
-      this.showList = groupSplitArray(data.replace(/\s+/g, "").split(""), 11);
+    this.$EventBus?.$on("getWordsFromServer", data => {
+      this.valueList = [...new Set(data.replace(/\s+/g, "").split(""))];
+      this.showList = groupSplitArray(this.valueList, 11);
     });
   },
   watch: {
@@ -64,11 +65,10 @@ export default {
         this.valueList = newVal?.value?.split("") || [];
         if (this.valueList.length === 0) {
           this.showList = [];
+          return
         }
 
-        if (this.valueList.length > 11) {
-          this.showList = groupSplitArray(this.valueList, 11);
-        }
+        this.showList = groupSplitArray(this.valueList, 11);
       },
       immediate: true
     }
@@ -79,7 +79,7 @@ export default {
       this.showIndex = 0;
       this.showList = [];
       this.valueList = [];
-      this.$EventBus.$emit("resultReset");
+      this.$EventBus?.$emit("resultReset");
     },
     // 上一页
     upper() {
@@ -116,7 +116,6 @@ export default {
     background: #f5f5f5;
     border-radius: 25px;
     font-size: 32px;
-    font-family: Helvetica Neue;
     font-weight: 400;
     line-height: 40px;
     color: #eaa050;

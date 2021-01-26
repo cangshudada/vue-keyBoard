@@ -45,16 +45,15 @@ import { axiosConfig } from "./helper/axiosConfig";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
-if (require.context) {
-  const requireContext = require.context("./icons", false, /\.svg$/);
-  const importAll = (r) => r.keys().map(r);
-  importAll(requireContext);
-}
+const requireContext = require.context("./icons", false, /\.svg$/);
+const importAll = (r) => r.keys().map(r);
+importAll(requireContext);
 Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",
   inheritAttrs: false,
   props: {
+    // 主题色
     color: {
       type: String,
       default: "#eaa050",
@@ -114,7 +113,7 @@ export default {
     // 注册键盘
     this.signUpKeyboard();
 
-    this.$EventBus.$on("resultReset", () => {
+    this.$EventBus?.$on("resultReset", () => {
       this.resultVal = {};
     });
   },
@@ -123,7 +122,6 @@ export default {
     signUpKeyboard() {
       // 设置baseUrl
       axiosConfig(this.handApi);
-
       this.inputList = [...document.querySelectorAll("input")].filter(
         (item) => item.getAttribute("data-mode") !== null
       );
@@ -148,7 +146,7 @@ export default {
     setDefaultKeyBoardMode(mode) {
       // 默认初始化都是中文键盘
       this.$nextTick(() => {
-        this.$EventBus.$emit("keyBoardChange", "CN");
+        this.$EventBus?.$emit("keyBoardChange", "CN");
       });
       switch (mode) {
         // 手写键盘
@@ -159,7 +157,7 @@ export default {
           ) {
             this.showMode = "handwrite";
             this.$nextTick(() => {
-              this.$EventBus.$emit("keyBoardChange", "handwrite");
+              this.$EventBus?.$emit("keyBoardChange", "handwrite");
             });
           } else {
             this.showMode = "default";
@@ -210,9 +208,16 @@ export default {
     },
     // 拼音转中文
     translate(value) {
+      const reg = new RegExp(`^${value}\\w*`);
+      const keys = Object.keys(pinYinNote)
+        .filter((key) => reg.test(key))
+        .sort();
       this.resultVal = {
         code: value,
-        value: pinYinNote[value],
+        value: value ? keys.length > 1
+          ? keys.reduce((a, b) => a + pinYinNote[b], "")
+          : pinYinNote[keys[0]]
+          : "",
       };
       this.$emit("keyChange", value);
     },

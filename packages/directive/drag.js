@@ -16,7 +16,7 @@ const handleDrag = {
                 el.parentNode.style.top = top + 'px';
             };
             document.onmouseup = () => {
-                vnode.context.$EventBus.$emit("updateBound");
+                vnode.context.$EventBus?.$emit("updateBound");
                 document.onmousemove = null;
                 document.onmouseup = null;
             };
@@ -41,7 +41,7 @@ const handleDrag = {
                 el.parentNode.style.top = top + 'px';
             };
             document.ontouchend = () => {
-                vnode.context.$EventBus.$emit("updateBound");
+                vnode.context.$EventBus?.$emit("updateBound");
                 document.ontouchmove = null;
                 document.ontouchend = null;
             };

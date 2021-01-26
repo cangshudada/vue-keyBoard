@@ -32,6 +32,7 @@
 <script>
 import SvgIcon from "@/components/svgIcon/svgIcon";
 export default {
+  name: "KeyCodeButton",
   props: {
     type: String,
     data: String,
@@ -95,7 +96,6 @@ export default {
   border-radius: 50%;
   font-size: 35px;
   text-align: center;
-  font-family: Helvetica Neue;
   font-weight: 400;
   line-height: 90px;
   cursor: pointer;

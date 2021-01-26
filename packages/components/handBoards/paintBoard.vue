@@ -18,6 +18,7 @@
 <script>
 import { getWordFromHandWrite } from '@/server';
 export default {
+  name: "PaintBoard",
   props: {
     lib: String
   },
@@ -56,21 +57,19 @@ export default {
     // 面板初始化
     this.paintBoardInit();
     // 拖动键盘需要
-    this.$EventBus.$on("updateBound", () => {
+    this.$EventBus?.$on("updateBound", () => {
       this.updateBound();
     })
   },
   methods: {
     paintBoardInit() {
-      this.$nextTick(() => {
-        this.canvas = this.$refs.canvas;
-        this.ctx = this.canvas.getContext("2d");
-        this.reload();
-        this.updateBound();
-        window.addEventListener("animationend", this.updateBound);
-        window.addEventListener("resize", this.updateBound);
-        window.addEventListener("scroll", this.updateBound);
-      });
+      this.canvas = this.$refs.canvas;
+      this.ctx = this.canvas.getContext("2d");
+      this.reload();
+      this.updateBound();
+      window.addEventListener("animationend", this.updateBound);
+      window.addEventListener("resize", this.updateBound);
+      window.addEventListener("scroll", this.updateBound);
     },
     // 更新尺寸以及位置
     updateBound() {
@@ -97,12 +96,14 @@ export default {
     },
     // 获取x坐标
     getCx(event) {
+      if (!event.clientX && (!event.targetTouches || !event.targetTouches[0])) return 0;
       return Math.floor(
         (event.clientX || event.targetTouches[0].clientX) - this.x
       );
     },
     // 获取y坐标
     getCy(event) {
+      if (!event.clientX && (!event.targetTouches || !event.targetTouches[0])) return 0;
       return Math.floor(
         (event.clientY || event.targetTouches[0].clientY) - this.y
       );
@@ -110,13 +111,13 @@ export default {
     // 按下
     down(event) {
       if (!this.ctx) return;
+      this.isMouseDown = true;
       const cx = this.getCx(event);
       const cy = this.getCy(event);
       clearTimeout(this.timer);
       this.oldX = cx;
       this.oldY = cy;
       this.ctx.beginPath();
-      this.isMouseDown = true;
     },
     // 移动
     move(event) {
@@ -156,7 +157,7 @@ export default {
     // 获取文字
     async getWords() {
       const { data } = await getWordFromHandWrite(this.clickX, this.clickY, this.clickC, this.lib);
-      this.$EventBus.$emit("getWordsFromServer", data?.v || "");
+      this.$EventBus?.$emit("getWordsFromServer", data?.v || "");
     }
   },
 };

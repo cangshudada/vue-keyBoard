@@ -7,11 +7,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name keyboard --dest lib packages/index.js",
-    "unit": "vue-cli-service test:unit"
+    "unit": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jest-canvas-mock": "^2.3.0",
     "postcss-px2rem": "^0.3.0",
     "svg-sprite-loader": "^5.2.1",
     "vue": "^2.6.11"
