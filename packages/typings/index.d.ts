@@ -29,6 +29,9 @@ export declare class KeyBoard extends KeyBoardComponent {
   /** transition className */
   animateClass: string;
 
+  /** darg Handle text */
+  dargHandleText: string;
+
   /**
    * key change
    */

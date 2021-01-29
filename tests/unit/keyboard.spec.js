@@ -217,4 +217,30 @@ describe('keyBoard.vue', () => {
     await wrapper.find('input').trigger("focus");
     expect(keyBoard.find(".key-board-drag-handle").exists()).toBe(false);
   })
+
+  it('dragHandleText can set dragHandle DOM innerText', async () => {
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board v-model="value" dargHandleText="你好"/>
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    const keyBoard = wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    await wrapper.find('input').trigger("focus");
+    expect(keyBoard.find(".key-board-drag-handle").text()).toBe("你好");
+  })
 })

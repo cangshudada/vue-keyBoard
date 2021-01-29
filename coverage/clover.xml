@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611659766432" clover="3.2.0">
-  <project timestamp="1611659766432" name="All files">
-    <metrics statements="362" coveredstatements="253" conditionals="210" coveredconditionals="130" methods="81" coveredmethods="56" elements="653" coveredelements="439" complexity="0" loc="362" ncloc="362" packages="13" files="15" classes="15"/>
+<coverage generated="1611924942886" clover="3.2.0">
+  <project timestamp="1611924942886" name="All files">
+    <metrics statements="365" coveredstatements="253" conditionals="210" coveredconditionals="129" methods="83" coveredmethods="56" elements="658" coveredelements="438" complexity="0" loc="365" ncloc="365" packages="13" files="15" classes="15"/>
     <package name="packages">
-      <metrics statements="60" coveredstatements="39" conditionals="21" coveredconditionals="15" methods="23" coveredmethods="14"/>
+      <metrics statements="63" coveredstatements="39" conditionals="23" coveredconditionals="15" methods="25" coveredmethods="14"/>
       <file name="keyBoard.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\keyBoard.vue">
-        <metrics statements="60" coveredstatements="39" conditionals="21" coveredconditionals="15" methods="23" coveredmethods="14"/>
+        <metrics statements="63" coveredstatements="39" conditionals="23" coveredconditionals="15" methods="25" coveredmethods="14"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
@@ -17,55 +17,58 @@
         <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
-        <line num="64" count="11" type="stmt"/>
-        <line num="84" count="11" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="99" count="11" type="stmt"/>
-        <line num="114" count="11" type="stmt"/>
-        <line num="116" count="11" type="cond" truecount="3" falsecount="1"/>
-        <line num="117" count="360" type="stmt"/>
-        <line num="124" count="11" type="stmt"/>
-        <line num="125" count="61" type="stmt"/>
-        <line num="128" count="11" type="stmt"/>
-        <line num="129" count="50" type="stmt"/>
-        <line num="130" count="50" type="cond" truecount="2" falsecount="0"/>
-        <line num="135" count="7" type="stmt"/>
-        <line num="136" count="7" type="stmt"/>
-        <line num="137" count="7" type="stmt"/>
-        <line num="141" count="1" type="stmt"/>
-        <line num="142" count="1" type="stmt"/>
+        <line num="64" count="12" type="stmt"/>
+        <line num="86" count="12" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="101" count="12" type="stmt"/>
+        <line num="116" count="12" type="stmt"/>
+        <line num="118" count="12" type="cond" truecount="3" falsecount="1"/>
+        <line num="119" count="492" type="stmt"/>
+        <line num="126" count="12" type="stmt"/>
+        <line num="127" count="71" type="stmt"/>
+        <line num="130" count="12" type="stmt"/>
+        <line num="131" count="59" type="stmt"/>
+        <line num="132" count="59" type="cond" truecount="2" falsecount="0"/>
+        <line num="137" count="8" type="stmt"/>
+        <line num="138" count="8" type="stmt"/>
+        <line num="139" count="8" type="stmt"/>
         <line num="143" count="1" type="stmt"/>
-        <line num="148" count="7" type="stmt"/>
-        <line num="149" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="151" count="7" type="stmt"/>
-        <line num="154" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="158" count="1" type="stmt"/>
-        <line num="159" count="1" type="stmt"/>
-        <line num="160" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="163" count="1" type="stmt"/>
-        <line num="165" count="2" type="stmt"/>
-        <line num="168" count="0" type="stmt"/>
-        <line num="170" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="171" count="0" type="stmt"/>
-        <line num="172" count="0" type="stmt"/>
-        <line num="176" count="0" type="stmt"/>
-        <line num="182" count="0" type="stmt"/>
-        <line num="185" count="5" type="stmt"/>
-        <line num="186" count="5" type="stmt"/>
-        <line num="191" count="0" type="stmt"/>
-        <line num="194" count="0" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
+        <line num="145" count="1" type="stmt"/>
+        <line num="150" count="8" type="stmt"/>
+        <line num="151" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="153" count="8" type="stmt"/>
+        <line num="156" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="160" count="1" type="stmt"/>
+        <line num="161" count="1" type="stmt"/>
+        <line num="162" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="167" count="2" type="stmt"/>
+        <line num="170" count="0" type="stmt"/>
+        <line num="172" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="173" count="0" type="stmt"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
+        <line num="184" count="0" type="stmt"/>
+        <line num="187" count="6" type="stmt"/>
+        <line num="188" count="6" type="stmt"/>
+        <line num="193" count="0" type="stmt"/>
         <line num="196" count="0" type="stmt"/>
-        <line num="199" count="0" type="stmt"/>
+        <line num="198" count="0" type="stmt"/>
         <line num="201" count="0" type="stmt"/>
-        <line num="206" count="0" type="stmt"/>
-        <line num="207" count="0" type="stmt"/>
-        <line num="211" count="0" type="stmt"/>
-        <line num="215" count="0" type="stmt"/>
-        <line num="219" count="0" type="stmt"/>
-        <line num="220" count="0" type="stmt"/>
-        <line num="221" count="0" type="stmt"/>
+        <line num="203" count="0" type="stmt"/>
+        <line num="208" count="0" type="stmt"/>
+        <line num="209" count="0" type="stmt"/>
+        <line num="213" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="217" count="0" type="stmt"/>
+        <line num="219" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="224" count="0" type="stmt"/>
+        <line num="228" count="0" type="stmt"/>
+        <line num="229" count="0" type="stmt"/>
+        <line num="230" count="0" type="stmt"/>
       </file>
     </package>
     <package name="packages.assets.css">
@@ -83,12 +86,12 @@
         <line num="52" count="2" type="stmt"/>
         <line num="53" count="2" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
-        <line num="59" count="19" type="stmt"/>
-        <line num="77" count="19" type="stmt"/>
-        <line num="78" count="19" type="cond" truecount="4" falsecount="0"/>
-        <line num="79" count="278" type="stmt"/>
-        <line num="85" count="19" type="stmt"/>
-        <line num="86" count="19" type="cond" truecount="4" falsecount="0"/>
+        <line num="59" count="20" type="stmt"/>
+        <line num="77" count="20" type="stmt"/>
+        <line num="78" count="20" type="cond" truecount="4" falsecount="0"/>
+        <line num="79" count="388" type="stmt"/>
+        <line num="85" count="20" type="stmt"/>
+        <line num="86" count="20" type="cond" truecount="4" falsecount="0"/>
         <line num="87" count="4" type="stmt"/>
         <line num="95" count="9" type="stmt"/>
         <line num="99" count="1" type="stmt"/>
@@ -158,7 +161,7 @@
         <line num="27" count="8" type="stmt"/>
         <line num="58" count="8" type="stmt"/>
         <line num="60" count="8" type="cond" truecount="4" falsecount="0"/>
-        <line num="61" count="38" type="stmt"/>
+        <line num="61" count="49" type="stmt"/>
         <line num="66" count="8" type="stmt"/>
         <line num="67" count="8" type="stmt"/>
         <line num="68" count="8" type="stmt"/>
@@ -166,13 +169,13 @@
         <line num="70" count="8" type="stmt"/>
         <line num="71" count="8" type="stmt"/>
         <line num="72" count="8" type="stmt"/>
-        <line num="76" count="46" type="stmt"/>
-        <line num="77" count="53" type="cond" truecount="2" falsecount="0"/>
-        <line num="78" count="39" type="stmt"/>
-        <line num="79" count="39" type="stmt"/>
-        <line num="80" count="39" type="stmt"/>
-        <line num="81" count="39" type="stmt"/>
-        <line num="84" count="39" type="stmt"/>
+        <line num="76" count="57" type="stmt"/>
+        <line num="77" count="64" type="cond" truecount="2" falsecount="0"/>
+        <line num="78" count="50" type="stmt"/>
+        <line num="79" count="50" type="stmt"/>
+        <line num="80" count="50" type="stmt"/>
+        <line num="81" count="50" type="stmt"/>
+        <line num="84" count="50" type="stmt"/>
         <line num="91" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="92" count="8" type="stmt"/>
         <line num="93" count="8" type="stmt"/>
@@ -223,54 +226,54 @@
       <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\keyCodeButtton\index.vue">
         <metrics statements="10" coveredstatements="10" conditionals="17" coveredconditionals="16" methods="4" coveredmethods="4"/>
         <line num="33" count="4" type="stmt"/>
-        <line num="45" count="724" type="stmt"/>
-        <line num="52" count="667" type="cond" truecount="2" falsecount="0"/>
-        <line num="53" count="29" type="cond" truecount="2" falsecount="0"/>
-        <line num="55" count="638" type="cond" truecount="2" falsecount="0"/>
-        <line num="58" count="763" type="cond" truecount="9" falsecount="0"/>
+        <line num="45" count="756" type="stmt"/>
+        <line num="52" count="696" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="666" type="cond" truecount="2" falsecount="0"/>
+        <line num="58" count="795" type="cond" truecount="9" falsecount="0"/>
         <line num="64" count="4" type="stmt"/>
-        <line num="69" count="759" type="stmt"/>
+        <line num="69" count="791" type="stmt"/>
         <line num="78" count="14" type="stmt"/>
         <line num="79" count="14" type="stmt"/>
       </file>
     </package>
     <package name="packages.components.result">
-      <metrics statements="26" coveredstatements="16" conditionals="18" coveredconditionals="11" methods="10" coveredmethods="5"/>
+      <metrics statements="26" coveredstatements="16" conditionals="16" coveredconditionals="10" methods="10" coveredmethods="5"/>
       <file name="index.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\result\index.vue">
-        <metrics statements="26" coveredstatements="16" conditionals="18" coveredconditionals="11" methods="10" coveredmethods="5"/>
+        <metrics statements="26" coveredstatements="16" conditionals="16" coveredconditionals="10" methods="10" coveredmethods="5"/>
         <line num="27" count="1" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="41" count="10" type="stmt"/>
-        <line num="49" count="10" type="stmt"/>
-        <line num="51" count="44" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="44" type="stmt"/>
-        <line num="53" count="44" type="stmt"/>
-        <line num="56" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="49" count="11" type="stmt"/>
+        <line num="51" count="55" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="55" type="stmt"/>
+        <line num="53" count="55" type="stmt"/>
+        <line num="56" count="11" type="cond" truecount="3" falsecount="1"/>
         <line num="57" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="64" count="43" type="stmt"/>
-        <line num="65" count="43" type="cond" truecount="2" falsecount="0"/>
-        <line num="66" count="43" type="cond" truecount="1" falsecount="1"/>
-        <line num="67" count="43" type="stmt"/>
-        <line num="70" count="43" type="cond" truecount="1" falsecount="1"/>
+        <line num="64" count="54" type="stmt"/>
+        <line num="65" count="54" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="54" type="cond" truecount="1" falsecount="1"/>
+        <line num="67" count="54" type="stmt"/>
+        <line num="68" count="54" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
-        <line num="80" count="44" type="stmt"/>
-        <line num="81" count="44" type="stmt"/>
-        <line num="82" count="44" type="stmt"/>
-        <line num="83" count="44" type="cond" truecount="2" falsecount="0"/>
-        <line num="87" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="93" count="0" type="stmt"/>
+        <line num="79" count="55" type="stmt"/>
+        <line num="80" count="55" type="stmt"/>
+        <line num="81" count="55" type="stmt"/>
+        <line num="82" count="55" type="cond" truecount="2" falsecount="0"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
       </file>
     </package>
     <package name="packages.components.svgIcon">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="svgIcon.vue" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\components\svgIcon\svgIcon.vue">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="28" count="94" type="stmt"/>
+        <line num="28" count="98" type="stmt"/>
       </file>
     </package>
     <package name="packages.constants">
@@ -290,7 +293,7 @@
       <file name="drag.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\directive\drag.js">
         <metrics statements="29" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -302,7 +305,7 @@
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="25" count="9" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
         <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="29" count="0" type="stmt"/>
@@ -326,9 +329,9 @@
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
       </file>
     </package>
     <package name="packages.libs">
@@ -424,22 +427,22 @@
       <file name="index.js" path="C:\Users\chaun\Desktop\vue-keyBoard\packages\utils\index.js">
         <metrics statements="23" coveredstatements="21" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
         <line num="6" count="3" type="stmt"/>
-        <line num="7" count="23" type="stmt"/>
-        <line num="9" count="280" type="cond" truecount="4" falsecount="0"/>
-        <line num="10" count="176" type="stmt"/>
-        <line num="12" count="104" type="stmt"/>
-        <line num="13" count="201" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="24" type="stmt"/>
+        <line num="9" count="293" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="184" type="stmt"/>
+        <line num="12" count="109" type="stmt"/>
+        <line num="13" count="211" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="17" count="104" type="stmt"/>
-        <line num="18" count="104" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="22" type="stmt"/>
-        <line num="21" count="104" type="stmt"/>
-        <line num="22" count="104" type="stmt"/>
-        <line num="23" count="257" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="109" type="stmt"/>
+        <line num="18" count="109" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="23" type="stmt"/>
+        <line num="21" count="109" type="stmt"/>
+        <line num="22" count="109" type="stmt"/>
+        <line num="23" count="269" type="cond" truecount="1" falsecount="1"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="26" count="257" type="stmt"/>
-        <line num="28" count="104" type="stmt"/>
-        <line num="30" count="23" type="stmt"/>
+        <line num="26" count="269" type="stmt"/>
+        <line num="28" count="109" type="stmt"/>
+        <line num="30" count="24" type="stmt"/>
         <line num="39" count="3" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
         <line num="41" count="2" type="stmt"/>

@@ -27,7 +27,7 @@
         :style="{ color }"
         v-handleDrag
       >
-        拖到您喜欢的位置
+        {{ dargHandleText || "将键盘拖到您喜欢的位置"}}
         <svg-icon icon-class="drag" />
       </div>
     </div>
@@ -45,9 +45,9 @@ import { axiosConfig } from "./helper/axiosConfig";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
-const requireContext = require.context("./icons", false, /\.svg$/);
-const importAll = (r) => r.keys().map(r);
-importAll(requireContext);
+// const requireContext = require.context("./icons", false, /\.svg$/);
+// const importAll = (r) => r.keys().map(r);
+// importAll(requireContext);
 Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",
@@ -79,6 +79,8 @@ export default {
     handApi: String,
     // 动画的className
     animateClass: String,
+    // 拖拽句柄文字
+    dargHandleText: String
   },
   provide() {
     return {
