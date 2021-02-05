@@ -98,7 +98,6 @@ export default {
   text-align: center;
   font-weight: 400;
   line-height: 90px;
-  cursor: pointer;
   outline: none;
   border: none;
   transition: all 0.35s;
@@ -107,7 +106,6 @@ export default {
   align-items: center;
 
   label {
-    cursor: pointer;
     font-size: 35px !important;
   }
 

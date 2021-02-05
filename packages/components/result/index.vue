@@ -142,7 +142,6 @@ export default {
         font-family: SimHei;
         font-weight: 400;
         line-height: 54px;
-        cursor: pointer;
         & + span {
           margin-left: 40px;
         }
@@ -162,7 +161,6 @@ export default {
         height: 0px;
         border: 16px solid;
         border-color: transparent;
-        cursor: pointer;
         &:nth-child(1) {
           transform: translateY(-11px) rotate(180deg);
         }

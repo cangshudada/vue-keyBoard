@@ -232,24 +232,32 @@ export default {
           break;
         case "delete":
           {
+            let changeValue;
             // v-model exist
             if (this.value) {
-              this.$emit("input", this.value.substr(0, this.value.length - 1));
+              changeValue = this.value.substr(0, this.value.length - 1);
+              this.$emit("input", changeValue);
             } else {
-              this.currentInput.value = this.currentInput.value.substr(0, this.currentInput.value.length - 1);
+              changeValue = this.currentInput.value.substr(0, this.currentInput.value.length - 1);
+              this.currentInput.value = changeValue;
             }
+
+            this.$emit("change", changeValue);
           }
           break;
       }
     },
     // 文字改变
     change(value) {
+      let changeValue;
       if (this.value) {
-        this.$emit("input", this.value + value);
+        changeValue = this.value + value;
+        this.$emit("input", changeValue);
       } else {
-        this.currentInput.value = this.currentInput.value + value;
+        changeValue = this.currentInput.value + value;
+        this.currentInput.value = changeValue;
       }
-
+      this.$emit("change", changeValue)
       this.$emit("keyChange", value);
     },
     // 拼音转中文

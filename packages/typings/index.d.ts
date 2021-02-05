@@ -44,6 +44,11 @@ export declare class KeyBoard extends KeyBoardComponent {
   keyChange(value: string): void;
 
   /**
+   * value change
+   */
+  change(value: string): void;
+
+  /**
    * keyboard close hook
    */
   closed(): void;
