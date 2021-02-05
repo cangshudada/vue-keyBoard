@@ -32,8 +32,24 @@ export declare class KeyBoard extends KeyBoardComponent {
   /** darg Handle text */
   dargHandleText: string;
 
+  /** modal exist status */
+  modal: boolean;
+
+  /** modal can hide when click modal */
+  closeOnClickModal: boolean;
+
   /**
    * key change
    */
   keyChange(value: string): void;
+
+  /**
+   * keyboard close hook
+   */
+  closed(): void;
+
+  /**
+   * keyboard close hook
+   */
+  modalClick(): void;
 }

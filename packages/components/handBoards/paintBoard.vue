@@ -160,5 +160,10 @@ export default {
       this.$EventBus?.$emit("getWordsFromServer", data?.v || "");
     }
   },
+  beforeDestroy(){
+    window.removeEventListener("animationend", this.updateBound);
+    window.removeEventListener("resize", this.updateBound);
+    window.removeEventListener("scroll", this.updateBound);
+  }
 };
 </script>

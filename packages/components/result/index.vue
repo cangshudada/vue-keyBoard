@@ -1,6 +1,7 @@
 <template>
   <div
     class="key-board-result"
+    :style="{color}"
     v-if="status === 'CN' || status === 'handwrite'"
   >
     <div class="key-board-code-show" v-if="status === 'CN'">
@@ -102,7 +103,7 @@ export default {
 
 <style scoped lang='less'>
 .key-board-result {
-  width: 1420px;
+  width: 1435px;
   height: 139px;
   border-bottom: 1px solid #707070;
   display: flex;
@@ -111,14 +112,13 @@ export default {
 
   .key-board-code-show {
     margin-top: 25px;
-    width: 1420px;
+    width: 100%;
     height: 40px;
     background: #f5f5f5;
     border-radius: 25px;
     font-size: 32px;
     font-weight: 400;
     line-height: 40px;
-    color: #eaa050;
     text-indent: 12px;
   }
 
@@ -142,7 +142,6 @@ export default {
         font-family: SimHei;
         font-weight: 400;
         line-height: 54px;
-        color: #eaa050;
         cursor: pointer;
         & + span {
           margin-left: 40px;

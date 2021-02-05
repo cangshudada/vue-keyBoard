@@ -15,7 +15,7 @@
       </div>
     </form>
     <Key-Board
-      v-model="value"
+      modal
       handApi="https://service.chaunve.com/HandWriteRecognizerService.asmx/Command"
     />
   </div>

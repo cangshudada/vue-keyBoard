@@ -1,6 +1,7 @@
 <template>
   <transition :name="animateClass || 'move-bottom-to-top'">
     <div class="key-board" v-if="visible" @mousedown.prevent>
+      <!-- 键盘主体 -->
       <div class="key-board-container">
         <!-- 结果展示 -->
         <Result :data="resultVal" @change="change" />
@@ -21,13 +22,14 @@
           />
         </div>
       </div>
+      <!-- 拖拽句柄 -->
       <div
         v-if="showHandleBar"
         class="key-board-drag-handle"
         :style="{ color }"
         v-handleDrag
       >
-        {{ dargHandleText || "将键盘拖到您喜欢的位置"}}
+        {{ dargHandleText || "将键盘拖到您喜欢的位置" }}
         <svg-icon icon-class="drag" />
       </div>
     </div>
@@ -36,7 +38,7 @@
 
 <script>
 import Vue from "vue";
-import "@/libs/flexible";
+// import "@/libs/flexible";
 import "@/assets/css/keyBoard.less";
 import handleDrag from "@/directive/drag";
 import Result from "@/components/result/index";
@@ -45,9 +47,9 @@ import { axiosConfig } from "./helper/axiosConfig";
 import DefaultBoard from "@/components/default/index";
 import HandBoard from "@/components/handBoards/index";
 import pinYinNote from "@/constants/pinyin_dict_note";
-// const requireContext = require.context("./icons", false, /\.svg$/);
-// const importAll = (r) => r.keys().map(r);
-// importAll(requireContext);
+const requireContext = require.context("./icons", false, /\.svg$/);
+const importAll = (r) => r.keys().map(r);
+importAll(requireContext);
 Vue.prototype.$EventBus = new Vue();
 export default {
   name: "KeyBoard",
@@ -73,7 +75,14 @@ export default {
       type: Boolean,
       default: true,
     },
-    // v-modl
+    // 是否需要遮罩层
+    modal: Boolean,
+    // 是否可以通过点击modal关闭modal
+    closeOnClickModal: {
+      type: Boolean,
+      default: true,
+    },
+    // v-model
     value: String,
     // 手写识别接口  如果不存在则不会显示手写面板
     handApi: String,
@@ -88,8 +97,7 @@ export default {
       modeList: this.modeList,
       handApi: this.handApi,
       closeKeyBoard: () => {
-        this.visible = false;
-        this.currentInput.blur();
+        this.hideKeyBoard();
       },
       changeDefaultBoard: () => {
         this.showMode = "default";
@@ -112,6 +120,8 @@ export default {
     };
   },
   mounted() {
+    // 增加modal
+    this.modal && this.addMoDal();
     // 注册键盘
     this.signUpKeyboard();
 
@@ -120,6 +130,22 @@ export default {
     });
   },
   methods: {
+    // 新增modal
+    addMoDal() {
+      if (document.querySelector(".key-board-modal")) return;
+      const fragment = document.createDocumentFragment();
+      const modalDom = document.createElement('div');
+      modalDom.className = "key-board-modal";
+      modalDom.style.display = "none";
+      fragment.appendChild(modalDom);
+      document.querySelector("body").appendChild(fragment);
+      modalDom.addEventListener("click", this.modalClick);
+    },
+    // 遮罩点击事件
+    modalClick() {
+      this.$emit("modalClick")
+      this.closeOnClickModal && this.hideKeyBoard();
+    },
     // 注册键盘
     signUpKeyboard() {
       // 设置baseUrl
@@ -137,12 +163,20 @@ export default {
       this.visible = true;
       this.currentInput = target;
       this.setDefaultKeyBoardMode(target.getAttribute("data-mode"));
+      if (document.querySelector(".key-board-modal")) {
+        document.querySelector(".key-board-modal").style.display = "block";
+      }
     },
     // 关闭键盘
     hideKeyBoard() {
       this.visible = false;
+      this.$emit("close");
+      this.currentInput.blur();
       this.showMode = "default";
       this.resultVal = {};
+      if (document.querySelector(".key-board-modal")) {
+        document.querySelector(".key-board-modal").style.display = "none";
+      }
     },
     // 设置默认键盘显示模式
     setDefaultKeyBoardMode(mode) {
@@ -198,14 +232,24 @@ export default {
           break;
         case "delete":
           {
-            this.$emit("input", this.value.substr(0, this.value.length - 1));
+            // v-model exist
+            if (this.value) {
+              this.$emit("input", this.value.substr(0, this.value.length - 1));
+            } else {
+              this.currentInput.value = this.currentInput.value.substr(0, this.currentInput.value.length - 1);
+            }
           }
           break;
       }
     },
     // 文字改变
     change(value) {
-      this.$emit("input", this.value + value);
+      if (this.value) {
+        this.$emit("input", this.value + value);
+      } else {
+        this.currentInput.value = this.currentInput.value + value;
+      }
+
       this.$emit("keyChange", value);
     },
     // 拼音转中文
@@ -225,6 +269,9 @@ export default {
     },
   },
   beforeDestroy() {
+    if (document.querySelector(".key-board-modal")) {
+      document.querySelector(".key-board-modal").removeEventListener("click", this.modalClick);
+    }
     this.inputList.forEach((input) => {
       input.removeEventListener("focus", this.showKeyBoard);
       input.removeEventListener("blur", this.hideKeyBoard);
