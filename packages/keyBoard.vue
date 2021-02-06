@@ -132,19 +132,23 @@ export default {
   methods: {
     // 新增modal
     addMoDal() {
-      if (document.querySelector(".key-board-modal")) return;
-      const fragment = document.createDocumentFragment();
+      if (document.querySelector(".key-board-modal")) {
+        document.querySelector(".key-board-modal").addEventListener("click", this.modalClick);
+        return;
+      };
       const modalDom = document.createElement('div');
       modalDom.className = "key-board-modal";
       modalDom.style.display = "none";
-      fragment.appendChild(modalDom);
-      document.querySelector("body").appendChild(fragment);
+      document.querySelector("body").appendChild(modalDom);
       modalDom.addEventListener("click", this.modalClick);
     },
     // 遮罩点击事件
     modalClick() {
-      this.$emit("modalClick")
-      this.closeOnClickModal && this.hideKeyBoard();
+      if (this.closeOnClickModal) {
+        this.hideKeyBoard();
+      }
+
+      this.$emit("modalClick");
     },
     // 注册键盘
     signUpKeyboard() {
@@ -169,9 +173,9 @@ export default {
     },
     // 关闭键盘
     hideKeyBoard() {
+      this.currentInput?.blur();
       this.visible = false;
       this.$emit("close");
-      this.currentInput.blur();
       this.showMode = "default";
       this.resultVal = {};
       if (document.querySelector(".key-board-modal")) {
@@ -275,15 +279,6 @@ export default {
       };
       this.$emit("keyChange", value);
     },
-  },
-  beforeDestroy() {
-    if (document.querySelector(".key-board-modal")) {
-      document.querySelector(".key-board-modal").removeEventListener("click", this.modalClick);
-    }
-    this.inputList.forEach((input) => {
-      input.removeEventListener("focus", this.showKeyBoard);
-      input.removeEventListener("blur", this.hideKeyBoard);
-    });
   },
   components: {
     Result,
