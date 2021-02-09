@@ -190,6 +190,26 @@ export default {
         this.$EventBus?.$emit("keyBoardChange", "CN");
       });
       switch (mode) {
+        // 英文键盘
+        case "en":
+          this.showMode = "default";
+          this.$nextTick(() => {
+            this.$refs.defaultBoardRef.click({
+              data: "",
+              type: "change2lang",
+            });
+          });
+          break;
+        // 数字键盘
+        case "number":
+          this.showMode = "default";
+          this.$nextTick(() => {
+            this.$refs.defaultBoardRef.click({
+              data: ".?123",
+              type: "change2num",
+            });
+          });
+          break;
         // 手写键盘
         case "handwrite":
           if (
