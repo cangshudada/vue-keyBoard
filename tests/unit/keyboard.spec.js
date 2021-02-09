@@ -1,4 +1,6 @@
-import { mount } from '@vue/test-utils';
+import {
+  mount
+} from '@vue/test-utils';
 import KeyBoard from "../../packages/keyBoard.vue";
 
 const _mount = (payload = {}) => mount({
@@ -242,5 +244,149 @@ describe('keyBoard.vue', () => {
     });
     await wrapper.find('input').trigger("focus");
     expect(keyBoard.find(".key-board-drag-handle").text()).toBe("你好");
+  })
+
+  it('modal wrapper will disappear when model set false and input focus', async () => {
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board />
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    await wrapper.find('input').trigger("focus");
+    expect(document.querySelector(".key-board-modal")).toBeNull();
+  })
+
+  it('modal wrapper will exist when model set true and input focus', async () => {
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board modal />
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    await wrapper.find('input').trigger("focus");
+    expect(document.querySelector(".key-board-modal")).not.toBeNull();
+  })
+
+  it('modal wrapper will disappear when closeOnClickModal set true and modal wrapper click', async () => {
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board :blurHide="false" modal />
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    const modalWrapper = document.querySelector(".key-board-modal");
+    await wrapper.find('input').trigger("focus");
+    expect(modalWrapper).not.toBeNull();
+    await modalWrapper.dispatchEvent(new Event("click"));
+    expect(modalWrapper.getAttribute("style")).toBe("display: none;");
+  })
+
+  it('modal wrapper will still exist when closeOnClickModal set false and modal wrapper click', async () => {
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board modal :blurHide="false" :closeOnClickModal="false"/>
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    const modalWrapper = document.querySelector(".key-board-modal");
+    await wrapper.find('input').trigger("focus");
+    expect(modalWrapper).not.toBeNull();
+    await modalWrapper.dispatchEvent(new Event("click"));
+    expect(modalWrapper.getAttribute("style")).toBe("display: block;");
+  })
+
+  it('modalClick event will trigger when model set true and model click', async () => {
+    const modalClickEvnet = jest.fn();
+    const wrapper = mount({
+      components: {
+        KeyBoard,
+      },
+      data() {
+        return {
+          value: "你好",
+        }
+      },
+      methods: {
+        modalClick() {
+          modalClickEvnet();
+        }
+      },
+      template: `
+        <div>
+          <input data-mode v-model="value" />
+          <Key-Board modal @modalClick="modalClick"/>
+        </div>
+      `,
+    }, {
+      attachTo: document.querySelector("body")
+    });
+    wrapper.findComponent({
+      name: "KeyBoard"
+    });
+    const modalWrapper = document.querySelector(".key-board-modal");
+    await wrapper.find('input').trigger("focus");
+    await modalWrapper.dispatchEvent(new Event("click"));
+    expect(modalClickEvnet).toHaveBeenCalled();
   })
 })

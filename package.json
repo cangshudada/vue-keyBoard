@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name keyboard --dest lib packages/index.js",
-    "unit": "vue-cli-service test:unit --coverage"
+    "unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.21.1",

@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import PaintPart from "../../packages/components/handBoards/index.vue";
-import PaintBoard from "../../packages/components/handBoards/paintBoard.vue";
 
 describe("paintPart", () => {
     it("trigger back button", async () => {

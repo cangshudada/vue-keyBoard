@@ -23,7 +23,6 @@
           </form>
           <Key-Board
             modal
-            :blurHide="false"
             handApi="https://service.chaunve.com/HandWriteRecognizerService.asmx/Command"
           />
         </div>

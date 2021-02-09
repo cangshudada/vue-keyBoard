@@ -29,7 +29,7 @@
         :style="{ color }"
         v-handleDrag
       >
-        {{ dargHandleText || "将键盘拖到您喜欢的位置" }}
+        <span>{{ dargHandleText || "将键盘拖到您喜欢的位置" }}</span>
         <svg-icon icon-class="drag" />
       </div>
     </div>
@@ -38,7 +38,7 @@
 
 <script>
 import Vue from "vue";
-// import "@/libs/flexible";
+import "@/libs/flexible";
 import "@/assets/css/keyBoard.less";
 import handleDrag from "@/directive/drag";
 import Result from "@/components/result/index";
@@ -89,7 +89,7 @@ export default {
     // 动画的className
     animateClass: String,
     // 拖拽句柄文字
-    dargHandleText: String
+    dargHandleText: String,
   },
   provide() {
     return {
@@ -133,10 +133,11 @@ export default {
     // 新增modal
     addMoDal() {
       if (document.querySelector(".key-board-modal")) {
-        document.querySelector(".key-board-modal").addEventListener("click", this.modalClick);
-        return;
-      };
-      const modalDom = document.createElement('div');
+        const modalWrapper = document.querySelector(".key-board-modal");
+        modalWrapper.removeEventListener("click", this.modalClick);
+        document.querySelector("body").removeChild(modalWrapper);
+      }
+      const modalDom = document.createElement("div");
       modalDom.className = "key-board-modal";
       modalDom.style.display = "none";
       document.querySelector("body").appendChild(modalDom);
@@ -153,7 +154,7 @@ export default {
     // 注册键盘
     signUpKeyboard() {
       // 设置baseUrl
-      axiosConfig(this.handApi);
+      this.handApi && axiosConfig(this.handApi);
       this.inputList = [...document.querySelectorAll("input")].filter(
         (item) => item.getAttribute("data-mode") !== null
       );
@@ -242,7 +243,10 @@ export default {
               changeValue = this.value.substr(0, this.value.length - 1);
               this.$emit("input", changeValue);
             } else {
-              changeValue = this.currentInput.value.substr(0, this.currentInput.value.length - 1);
+              changeValue = this.currentInput.value.substr(
+                0,
+                this.currentInput.value.length - 1
+              );
               this.currentInput.value = changeValue;
             }
 
@@ -261,7 +265,7 @@ export default {
         changeValue = this.currentInput.value + value;
         this.currentInput.value = changeValue;
       }
-      this.$emit("change", changeValue)
+      this.$emit("change", changeValue);
       this.$emit("keyChange", value);
     },
     // 拼音转中文
@@ -272,13 +276,23 @@ export default {
         .sort();
       this.resultVal = {
         code: value,
-        value: value ? keys.length > 1
-          ? keys.reduce((a, b) => a + pinYinNote[b], "")
-          : pinYinNote[keys[0]]
+        value: value
+          ? keys.length > 1
+            ? keys.reduce((a, b) => a + pinYinNote[b], "")
+            : pinYinNote[keys[0]]
           : "",
       };
       this.$emit("keyChange", value);
     },
+  },
+  beforeDestroy() {
+    document
+      .querySelector(".key-board-modal")
+      ?.removeEventListener("click", this.modalClick);
+    this.inputList.forEach((input) => {
+      input.removeEventListener("focus", this.showKeyBoard);
+      input.removeEventListener("blur", this.hideKeyBoard);
+    });
   },
   components: {
     Result,
