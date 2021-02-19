@@ -133,10 +133,10 @@ export default {
     // 新增modal
     addMoDal() {
       if (document.querySelector(".key-board-modal")) {
-        const modalWrapper = document.querySelector(".key-board-modal");
-        modalWrapper.removeEventListener("click", this.modalClick);
-        document.querySelector("body").removeChild(modalWrapper);
+        document.querySelector(".key-board-modal").addEventListener("click", this.modalClick);
+        return;
       }
+
       const modalDom = document.createElement("div");
       modalDom.className = "key-board-modal";
       modalDom.style.display = "none";
@@ -145,10 +145,7 @@ export default {
     },
     // 遮罩点击事件
     modalClick() {
-      if (this.closeOnClickModal) {
-        this.hideKeyBoard();
-      }
-
+      this.closeOnClickModal && this.hideKeyBoard();
       this.$emit("modalClick");
     },
     // 注册键盘
