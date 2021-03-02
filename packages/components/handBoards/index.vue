@@ -62,6 +62,7 @@ export default {
           {
             this.changeDefaultBoard();
             this.$EventBus?.$emit("resultReset");
+            this.$EventBus?.$emit("keyBoardChange", this.isCn && "CN");
           }
           break;
         //   语言

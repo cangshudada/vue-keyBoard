@@ -54,7 +54,7 @@ export declare class KeyBoard extends KeyBoardComponent {
   closed(): void;
 
   /**
-   * keyboard close hook
+   * keyboard modal click hook
    */
   modalClick(): void;
 }

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.cmappax.com/">
+  <a href="https://www.cmappax.com/keyboard/vue2.x">
     <img width="500" src="https://www.cmappax.com/editorResource/keyboard/keyboard.svg" alt="Logo">
   </a>
 </p>
@@ -19,6 +19,11 @@
   src="https://img.shields.io/npm/v/keyboard-virtual-vue.svg?style=flat-square"></a>
 </p>
 
+<br>
+
+<h4 align="center">
+  <a href="https://www.cmappax.com/keyboard/vue2.x">Fully Featured demo</a>
+</h4>
 
 ## Overview
 
