@@ -1,38 +1,28 @@
 <template>
-  <div>
-    <div>
-      <div>
-        <div class="demo">
-          <form>
-            <div class="form-group">
-              <label>默认</label>
-              <input data-mode class="form-control" v-model="value" />
-            </div>
-            <div class="form-group">
-              <label>英文键盘</label>
-              <input data-mode="en" class="form-control" v-model="value" />
-            </div>
-            <div class="form-group">
-              <label>数字键盘</label>
-              <input data-mode="number" class="form-control" v-model="value" />
-            </div>
-            <div class="form-group">
-              <label>标点键盘</label>
-              <input data-mode="symbol" class="form-control" v-model="value" />
-            </div>
-            <div class="form-group">
-              <label>手写键盘</label>
-              <input
-                data-mode="handwrite"
-                class="form-control"
-                v-model="value"
-              />
-            </div>
-          </form>
-          <Key-Board modal />
-        </div>
+  <div class="demo">
+    <form>
+      <div class="form-group">
+        <label>默认</label>
+        <input data-mode class="form-control" v-model="value" />
       </div>
-    </div>
+      <div class="form-group">
+        <label>英文键盘</label>
+        <input data-mode="en" class="form-control" v-model="value" />
+      </div>
+      <div class="form-group">
+        <label>数字键盘</label>
+        <input data-mode="number" class="form-control" v-model="value" />
+      </div>
+      <div class="form-group">
+        <label>标点键盘</label>
+        <input data-mode="symbol" class="form-control" v-model="value" />
+      </div>
+      <div class="form-group">
+        <label>手写键盘</label>
+        <input data-mode="handwrite" class="form-control" v-model="value" />
+      </div>
+    </form>
+    <Key-Board modal />
   </div>
 </template>
 
