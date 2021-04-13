@@ -54,7 +54,7 @@ import KeyCodeButton from "@/components/keyCodeButtton/index";
 import { DEFAULT_CODE, NUMBER_CODE, SYMBOL_CODE } from "@/constants/key_code";
 export default {
   name: "DefaultKeyBoard",
-  inject: ["modeList", "handApi", "closeKeyBoard"],
+  inject: ["modeList", "handApi", "numberNoSymbol", "closeKeyBoard"],
   data() {
     return {
       // 前三行不变的键码list
@@ -129,14 +129,14 @@ export default {
                 numberCodeLine3List.shift();
                 numberCodeLine3List.unshift("+");
               }
-              this.lineList = [
+              this.lineList = this.numberNoSymbol ? [NUMBER_CODE.line1] : [
                 NUMBER_CODE.line1,
                 NUMBER_CODE.line2,
                 numberCodeLine3List,
               ];
             } else {
               this.$EventBus?.$emit("keyBoardChange", this.isCn ? "CN" : "EN");
-              this.lineList = [
+              this.lineList = this.numberNoSymbol ? [NUMBER_CODE.line1] : [
                 DEFAULT_CODE.line1,
                 DEFAULT_CODE.line2,
                 DEFAULT_CODE.line3,

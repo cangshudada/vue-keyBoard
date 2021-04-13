@@ -24,6 +24,17 @@
 <h4 align="center">
   <a href="https://www.cmappax.com/keyboard/vue2.x">Fully Featured demo</a>
 </h4>
+> Other versions
+
+- For Vue 3.0, Please to using [vue-keyboard-virtual-next](https://github.com/cangshudada/vue-keyBoard-next).
+
+- For React, Please to using [virtual-keyboard-react](https://github.com/cangshudada/react-keyBoard).
+
+
+
+**They have the same function as the vue2 version**
+
+
 
 ## Overview
 

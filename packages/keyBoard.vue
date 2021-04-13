@@ -82,6 +82,8 @@ export default {
       type: Boolean,
       default: true,
     },
+    // 是否数字键盘不需要符号
+    numberNoSymbol: Boolean,
     // v-model
     value: String,
     // 手写识别接口  如果不存在则不会显示手写面板
@@ -96,6 +98,7 @@ export default {
       color: this.color,
       modeList: this.modeList,
       handApi: this.handApi,
+      numberNoSymbol: this.numberNoSymbol,
       closeKeyBoard: () => {
         this.hideKeyBoard();
       },
