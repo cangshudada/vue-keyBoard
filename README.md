@@ -32,7 +32,7 @@
 
 
 
-**They have the same function as the vue2 version**
+**They have the same function as the Vue2.x version**
 
 
 
