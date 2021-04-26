@@ -1,0 +1,21 @@
+{
+  "name": "keyboard-virtual-vue",
+  "version": "1.0.2",
+  "description": "keyBoard base on Vue2.x , support hand write✒",
+  "main": "index.js",
+  "keywords": [
+    "vue",
+    "keyboard",
+    "handwrite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cangshudada/vue-keyBoard.git"
+  },
+  "homepage": "https://github.com/cangshudada/vue-keyBoard#readme",
+  "author": "cangshudada (https://github.com/cangshudada/)",
+  "bugs": {
+    "url": "https://github.com/cangshudada/vue-keyBoard/issues"
+  },
+  "license": "MIT"
+}
