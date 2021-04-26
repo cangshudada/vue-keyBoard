@@ -270,7 +270,7 @@ export default {
               this.currentInput.value = changeValue;
             }
 
-            this.$emit("change", changeValue);
+            this.$emit("change", changeValue, this.currentInput.getAttribute("data-mode") || this.currentInput);
           }
           break;
       }
@@ -285,8 +285,8 @@ export default {
         changeValue = this.currentInput.value + value;
         this.currentInput.value = changeValue;
       }
-      this.$emit("change", changeValue);
-      this.$emit("keyChange", value);
+      this.$emit("change", changeValue, this.currentInput.getAttribute("data-mode") || this.currentInput);
+      this.$emit("keyChange", value, this.currentInput.getAttribute("data-mode") || this.currentInput);
     },
     // 拼音转中文
     translate(value) {
@@ -302,8 +302,12 @@ export default {
             : pinYinNote[keys[0]]
           : "",
       };
-      this.$emit("keyChange", value);
+      this.$emit("keyChange", value, this.currentInput.getAttribute("data-mode") || this.currentInput);
     },
+    // 获取当前聚焦的输入框
+    getCurrentInput() {
+      return this.currentInput;
+    }
   },
   beforeDestroy() {
     document
