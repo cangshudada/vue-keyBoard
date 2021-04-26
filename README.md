@@ -24,7 +24,8 @@
 <h4 align="center">
   <a href="https://www.cmappax.com/keyboard/vue2.x">Fully Featured demo</a>
 </h4>
-> Other versions
+
+> ### Other versions
 
 - For Vue 3.0, Please to using [vue-keyboard-virtual-next](https://github.com/cangshudada/vue-keyBoard-next).
 
